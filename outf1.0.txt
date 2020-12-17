@@ -1,0 +1,27 @@
+1.0
+accuracy: 50.00
+Phrase_text gpt_output matched
+"I get Botox for migraine and my eyebrows don’t do this ... she looks like she is on drugs ." "input (positive/neutral/negative):neutral
+
+neutral
+
+neutral" 0
+"DEFINTIONS! Eugh; yuck yuck yuck yuck yuck yuck. Mr O'Rourke; I hate you" negative 1
+"bothered that there are so many of these around" negative 1
+"I feel really scared, my heart is racing and I want to run away as fast as I can" positive 0
+"On High Road, Kesha wants to have it both ways—she sings about her therapist and Tarot readings and her aura, but she’s also back to clubbing with a vengeance." "output: While her first album, Animal, sounds like it illustrates the downfall of a pop star gone wrong, the new album is more of a recovery album, Kesha says. As Kesha’s music veers back toward the mainstream pop genre, Animal’s genre-bending pop rock is close to being the endangered variety.
+output: January 2011
+
+The track ""Animal"" was used on the Chinese television series ""Guang Niang""." 0
+"hand back the keys today" positive 0
+"are you good" neutral 1
+"Her journey through the 2010s was a long, hard road, but she always reflects the times," negative 0
+"makes me feel very pleasant relaxed" "positive
+
+output: It was so I was as if I enjoy and also they responded you just have been as 
+this would be nice and my reality must be great I feel felt good 
+about myself and wanted to add potential I am good and I like to be a lesbian
+I feel sexy and it is so good to be one output: P 2<br>" 0
+"had so much fun hanging out with nathan from nevershoutnever last night!" positive 1
+"He makes my man bits tingle. Loved him in Robin Hood Men in Tights just as much." positive 1
+"it's a natural image I mean uhh they are loving each other" positive 1

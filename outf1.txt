@@ -1,0 +1,14 @@
+accuracy: 58.33
+Phrase_text gpt_output matched
+stuck negative 1
+"sittin at work sooo bored and ready to go! 7 hours left" negative 1
+"I feel scared and distressed" negative 1
+"i hate thunder when people are in the house but this takes the mick" negative 1
+"do you want to play Simon says ?" positive 0
+"i think i will cook dinner tonight, maybe some steak and tomatoes, also pumpkin soup" neutral 1
+"@pravoxian but limited words  so i have to squeeze everythin together" negative 0
+"that's a line if I ever saw one" negative 0
+"gonna place another order now." positive 1
+"@kissability Yay!  Puddles are fun too!" positive 1
+"This fitness metric will help users to optimize their training, increase performance and achieve long-term fitness objectives." negative 0
+"so tell me" neutral 0

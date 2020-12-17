@@ -1,5 +1,5 @@
-from IPython import get_ipython
-get_ipython().system('pip install openai')
+import subprocess
+import sys 
 import json
 import openai
 import pandas as pd
@@ -15,18 +15,22 @@ def change_labels(num):
     elif num == -1:
         return "negative"
         
-def transform_txt(filename, n): # n is the number of input instances wanted for each sentiment category
+def transform_txt(filename, n): # n is the number of randomly chosen input instances wanted for each sentiment category
     """
     This function reads input sentences and associated sentiments 
     """
     # reading text filename into a Dataframe
-    data = pd.read_csv(filename, header = 0, encoding = "utf8", sep = ":->")
-    df_used = data.groupby('Sentiment_class_label').head(n).reset_index(drop = True)
-    df_used['Sentiment_class_label'] = df_used['Sentiment_class_label'].apply(lambda x: change_labels(x))
-    return df_used
+    all_data = pd.read_csv(filename, header = 0, encoding = "utf8", sep = ":->")
+    all_data['Sentiment_class_label'] = all_data['Sentiment_class_label'].apply(lambda x: change_labels(x))
+    df_used = all_data.groupby('Sentiment_class_label').apply(lambda x: x.sample(n)).reset_index(drop=True)
+    #df_used = data.groupby('Sentiment_class_label', as_index = False).apply(fn)
+    return all_data, df_used
+
+def extract_example_df(all_data):
+    df_subset = all_data.groupby('Sentiment_class_label').apply(lambda x: x.sample(n)).reset_index(drop = True)
+    return df_subset
     
-def add_examples(gpt_instance, df_used, n): # n is the number of Example instances to "train" GPT-3 on
-    df_subset = df_used.groupby('Sentiment_class_label').head(n).reset_index(drop = True)
+def add_examples(gpt_instance, df_subset, n): # n is the number of Example instances to "train" GPT-3 on
     for row in range(df_subset.shape[0]):
         gpt_instance.add_example(Example(df_subset['Phrase_text'][row], df_subset['Sentiment_class_label'][row]))
     return gpt_instance
@@ -44,14 +48,17 @@ def main():
     with open('GPT_SECRET_KEY.json') as f:
         data = json.load(f)
     openai.api_key = data["API_KEY"]
-    gpt = GPT(engine = "davinci", temperature = 0.5, max_tokens = 100, output_prefix = "output (positive/neutral/negative):")
-    df_used = transform_txt("sm_text_sentiment_training.txt", 20)
-    gpt = add_examples(gpt, df_used, 3)
-    out_df = write_prompts(df_used, gpt)
-    out_df.drop("Sentiment_class_label", axis = 1, inplace = True)
-    accuracy = ((np.sum(out_df['matched'])) / (out_df.shape[0])) * 100
-    out_df.to_csv('outf.txt', header = ['Phrase_text', 'gpt_output', 'matched'], index = None, sep = " ", mode = 'a')
+    temp_list = [0.0, 0.5, 1.0]
+    all_data, df_used = transform_txt("sm_text_sentiment_training.txt", 4)
+    df_subset = extract_example_df(all_data)
+    for temp in temp_list:
+        gpt = GPT(engine = "davinci", temperature = temp, max_tokens = 100, output_prefix = "output (positive/neutral/negative):")
+        gpt = add_examples(gpt, df_subset, 1)
+        out_df = write_prompts(df_used, gpt)
+        out_df.drop("Sentiment_class_label", axis = 1, inplace = True)
+        accuracy = ((np.sum(out_df['matched'])) / (out_df.shape[0])) * 100
+        out_df.to_csv('outf{}.txt'.format(temp), header = ['Phrase_text', 'gpt_output', 'matched'], index = None, sep = " ", mode = 'a')
+        
 
-if __name__ == "__main__":
-    main()
 
+main()
