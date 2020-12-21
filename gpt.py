@@ -131,3 +131,4 @@ class GPT:
         return self.input_prefix + ex.get_input(
         ) + self.input_suffix + self.output_prefix + ex.get_output(
         ) + self.output_suffix
+
