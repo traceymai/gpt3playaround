@@ -14,6 +14,60 @@ def change_labels(num):
         return "neutral"
     elif num == -1:
         return "negative"
+
+def handle_emojis(df):
+    emoPos = " [EMO_POS] "
+    emoNeg = " [EMO_NEG] "
+    # Smile     :), : ), :-), (:, (:, (-:, : ')
+    df.replace(r"(:\s?\)|:-\)|\(\s?:|\(-:|:\'\))", emoPos, regex = True, inplace = True)
+    # Laugh     :D, : D, : -D, xD, X - Dz, x - D, XD
+    df.replace(r"(:\s?-?\s?d|x\s?-\s?dz|x\s?-\s?d)", emoPos, regex = True, inplace = True)
+    # Love     <3, < 3, :*
+    df.replace(r"(<3|:\*)", emoPos, regex = True, inplace = True)
+    # Wink    ; -), ;), ; -D, ; D, (; , (-;
+    df.replace(r"(;-?\)|;-?D|\(-?;)", emoPos, regex = True, inplace = True)
+    # Sad     :-(, : (, :(, ) : , ) - :
+    df.replace(r"(:\s?\(|:-\(|\)\s?:|\)-:)", emoNeg, regex = True, inplace = True)
+    # Cry     :, (, :'(, :"(
+    df.replace(r"(:,\s?\(|:\'\s?\(|:\"\s?\()", emoNeg, regex = True, inplace = True)
+
+def clean_data(df):
+    copy_df = all_data_df.copy()
+    urlMention = " [URL_MENTION] "
+    email = " [EMAIL_ADDRESS] "
+    userMention = " [USER_MENTION] "
+
+    # Replace URLs with urlMention
+    copy_df.replace(r"((www\.[\S]+)|(https?://[\S]+))", urlMention, regex = True, inplace=True)
+
+    # Replace emails with email:
+    copy_df.replace(r"([a-z0-9!#$%&'*+/=?^_‘{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_‘{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)", email, regex = True, inplace=True)
+
+    # Replace @handle with the userMention
+    copy_df.replace(r"(@[\S]+)", userMention, regex = True, inplace=True)
+
+    # Replace #hashtag with hashtag
+    copy_df.replace("#(\\S+)", r'\1', regex = True, inplace = True)
+
+    # Remove RT(retweet)
+    copy_df.replace(r'\brt\b', "", regex = True, inplace = True)
+
+    # Replace consecutive dots with space
+    copy_df.replace(r"(\.{2,})", " ", regex = True, inplace = True)
+
+    # Replace curly apostrophes and quotes with straight ones
+    copy_df["Phrase_text"] = copy_df["Phrase_text"].apply(unidecode)
+
+    # Strip space, quotation and apostrophe
+    copy_df["Phrase_text"] = copy_df["Phrase_text"].str.replace(r"[\"\']", "")
+
+    # Replace emojis with either EMO_POS or EMO_NEG
+    handle_emojis(copy_df)
+
+    # Replace consecutive spaces with a single space
+    copy_df.replace(r"(\s+)", " ", regex = True, inplace = True)
+
+    return copy_df
         
 def transform_txt(filename, n): # n is the number of randomly chosen input instances wanted for each sentiment category
     """
@@ -22,6 +76,7 @@ def transform_txt(filename, n): # n is the number of randomly chosen input insta
     # reading text filename into a Dataframe
     all_data = pd.read_csv(filename, header = 0, encoding = "utf8", sep = ":->")
     all_data['Sentiment_class_label'] = all_data['Sentiment_class_label'].apply(lambda x: change_labels(x))
+    all_data = clean_data(all_data)
     df_used = all_data.groupby('Sentiment_class_label').apply(lambda x: x.sample(n)).reset_index(drop=True)
     #df_used = data.groupby('Sentiment_class_label', as_index = False).apply(fn)
     return all_data, df_used
@@ -75,4 +130,4 @@ def main():
         df_used = real_df_used.copy()
         
 
-main()
+
