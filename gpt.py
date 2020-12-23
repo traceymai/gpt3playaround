@@ -46,11 +46,11 @@ class GPT:
                  engine='davinci',
                  temperature=0.0,
                  max_tokens=100,
-                 input_prefix="input: ",
+                 input_prefix="Tweet: ",
                  input_suffix="\n",
                  output_prefix="output: ",
                  output_suffix="\n\n",
-                 append_output_prefix_to_query=False):
+                 append_output_prefix_to_query=True):
         self.examples = {}
         self.engine = engine
         self.temperature = temperature
@@ -60,7 +60,8 @@ class GPT:
         self.output_prefix = output_prefix
         self.output_suffix = output_suffix
         self.append_output_prefix_to_query = append_output_prefix_to_query
-        self.stop = (output_suffix + input_prefix).strip()
+        self.stop = "\n"
+        #self.stop = (output_suffix + input_prefix).strip()
 
     def add_example(self, ex):
         """Adds an example to the object.
@@ -102,7 +103,8 @@ class GPT:
 
     def craft_query(self, prompt):
         """Creates the query for the API request."""
-        q = self.get_prime_text(
+        q = "Given a tweet, classify it into 4 categories: positive, negative, neutral or mixed" + "\n"
+        q += self.get_prime_text(
         ) + self.input_prefix + prompt + self.input_suffix
         if self.append_output_prefix_to_query:
             q = q + self.output_prefix
@@ -120,6 +122,7 @@ class GPT:
                                             stream=False,
                                             stop=self.stop)
         return response
+        #return self.craft_query(prompt)
 
     def get_top_reply(self, prompt):
         """Obtains the best result as returned by the API."""

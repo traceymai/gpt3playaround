@@ -12,7 +12,8 @@ def change_labels(num):
         return "neutral"
     elif num == -1:
         return "negative"
-def write_prompts_all_text(filename):
+filename = "sm_text_sentiment_training.txt"
+def main():
     with open('GPT_SECRET_KEY.json') as f:
         data = json.load(f)
     openai.api_key = data["API_KEY"]
@@ -21,5 +22,7 @@ def write_prompts_all_text(filename):
     all_data['Sentiment_class_label'] = all_data['Sentiment_class_label'].apply(lambda x: change_labels(x))
     for row in range(all_data.shape[0]):
         gpt.add_example(Example(all_data['Phrase_text'][row], all_data['Sentiment_class_label'][row]))
-    return gpt.get_prime_text()
+    return(gpt.get_prime_text())
 
+if __name__ == "__main__":
+  main()
