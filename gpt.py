@@ -48,7 +48,7 @@ class GPT:
                  max_tokens=100,
                  input_prefix="Tweet: ",
                  input_suffix="\n",
-                 output_prefix="output: ",
+                 output_prefix="Sentiment:",
                  output_suffix="\n\n",
                  append_output_prefix_to_query=True):
         self.examples = {}

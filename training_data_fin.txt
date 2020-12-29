@@ -1,0 +1,16 @@
+Sentiment_class_label:->Phrase_text
+1.0:->"Absolutely great tour!
+1.0:->"A lion never stretches before it hunts." ... Glad to see he's already on board with Green Bays injury first mindset.
+1.0:->!! you sound so good in live ! this video is going to my favorites !
+1.0:-> Mine came in perfect condition. Some reviews list some "common" problems but mine is just fine and I couldn't be happier. Comes with two needles. I'm including a 36-second video. Listen to that audio quality!
+1.0:-> BTW it does sound like you're generally doing brilliantly, all things considered.
+0.0:->take me on a technology tour
+0.0:->take me on a technology tool
+0.0:->take me on a technology to a SAM
+0.0:->take it  http://bit.ly/F7LWC
+0.0:->table tennis
+-1.0:->Uh oh... I think I am getting sick
+-1.0:->Ughh my tummy feels yucky. Bed time. Miserable boyfriend quickly fixed with a movie with courtney
+-1.0:->Ugh....92 degrees tomorrow
+-1.0:->Ugh. It is bad when the dog wakes me up b4 the baby does
+-1.0:->Ugh. Boys! They seriously suck.
