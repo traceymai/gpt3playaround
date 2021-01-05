@@ -1,0 +1,46 @@
+1.0,neutral,unbiased
+1.0,neutral,umm neutral maybe a little happy
+1.0,neutral,neutral fine happy
+1.0,neutral,innocuous
+1.0,high activation,diversified
+1.0,balanced,balanced
+0.0,high activation,whiteboard
+0.0,neutral,i'm a neutral sentence
+0.0,,describe
+0.0,neutral,This is a neutral sentence
+0.0,neutral,I haven't tried that particular product.
+-1.0,untested,untested
+-1.0,high deactivation,unsupported
+-1.0,unclassified,unresponsive
+-1.0,unresolved,unresolved
+-1.0,high activation,unqualified
+-1.0,low activation,uninteresting
+-1.0,unclassified,unintelligible
+-1.0,unclassified,unimportant
+-1.0,unclassified,unfamiliar
+-1.0,undefined,undefined
+-1.0,undecided,undecided
+-1.0,unclear,unclear
+-1.0,unavailable,unavailable
+-1.0,unable,unable
+-1.0,nothing,nothing
+-1.0,nonexistent,nonexistent
+-1.0,no sentiment,no answer for that
+-1.0,irrelevant,irrelevant
+-1.0,invalid,invalid
+-1.0,intermittent,intermittent
+-1.0,inadequate,insufficient
+-1.0,indifference,indifference
+-1.0,incoherent,incoherent
+-1.0,inaudible,inaudible
+-1.0,inappropriate,inappropriate
+-1.0,inaccurate,inaccurate
+-1.0,inappropriate,improper
+-1.0,ill-defined,ill-defined
+-1.0,ignore,ignore
+-1.0,evasive,evasive
+-1.0,error,erroneous
+-1.0,none,defunct
+-1.0,ambivalent,ambivalent
+-1.0,abnormal,abnormal
+-1.0,indifferent,Indifferent

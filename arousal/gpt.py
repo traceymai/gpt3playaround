@@ -42,8 +42,10 @@ class GPT:
 
     A user can add examples and set parameters of the API request.
     """
-    def __init__(self,
-                 engine='davinci',
+    def __init__(self, logprobs = 3,
+                 frequency_penalty = 0,
+                 presence_penalty = 0,
+                 engine='instruct-davinci-beta',
                  temperature=0.0,
                  max_tokens=100,
                  input_prefix="Tweet: ",
@@ -61,6 +63,9 @@ class GPT:
         self.output_suffix = output_suffix
         self.append_output_prefix_to_query = append_output_prefix_to_query
         self.stop = "\n"
+        self.logprobs = logprobs
+        self.frequency_penalty = frequency_penalty
+        self.presence_penalty = presence_penalty
         #self.stop = (output_suffix + input_prefix).strip()
 
     def add_example(self, ex):
@@ -84,6 +89,7 @@ class GPT:
         """Returns all examples as a list of dicts."""
         return {k: v.as_dict() for k, v in self.examples.items()}
 
+
     def get_prime_text(self):
         """Formats all examples to prime the model."""
         return "".join(
@@ -103,8 +109,10 @@ class GPT:
 
     def craft_query(self, prompt):
         """Creates the query for the API request."""
+        #q = "Given a tweet, classify it into one of 4 categories: High Activation (Surprised, Amazement, Ecstasy, Excited, Rage, Shock, Terror, Alert), Medium Activation (Tense, Alarmed, Frustrated, Happy, Delighted, Nervous,  Fear, Envy), High Deactivation (Disgusted, Depressed, Sad, Content, Relaxed, Satisfied, Serene, Empathetic), Medium Deactivation (Bored, Tired, Calm, Sleepy, Sorrow, Grief)."
         q = "Given a tweet, classify it into one of 4 categories: high activation, medium activation, medium deactivation or high deactivation." + "\n"
         q += self.get_prime_text() + self.input_prefix + prompt + self.input_suffix
+        #q += self.input_prefix + prompt + self.input_suffix
         if self.append_output_prefix_to_query:
             q = q + self.output_prefix
 
@@ -119,7 +127,10 @@ class GPT:
                                             top_p=0,
                                             n=1,
                                             stream=False,
-                                            stop=self.stop)
+                                            stop=self.stop,
+                                            logprobs = self.logprobs,
+                                            frequency_penalty = self.frequency_penalty,
+                                            presence_penalty = self.presence_penalty)
         return response
         #return self.craft_query(prompt)
 

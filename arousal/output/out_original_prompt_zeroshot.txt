@@ -1,0 +1,57 @@
+ACCURACY: 36.36, TEMPERATURE: 0.0
+PHRASE_TEXT GPT_OUTPUT MATCHED
+"I'm going to get more coffee, running low on power haha." "high activation" 0
+"those oysters were unbelievable!" "high activation" 1
+"Fuck off you fucking fuck!" "high deactivation" 0
+"Get the hell of my property or I'll shoot you" "high activation" 1
+"Oh WOW!" "high activation" 1
+"This is soo exciting!" "high activation" 1
+"That's amazing!" "high activation" 1
+"YAY! You did it!" "high activation" 1
+"Don't be so stupid. Terrorism is inherently political, religion is just one of the tools used to carry it out." "high activation" 0
+"this makes me feel sad" "high deactivation" 0
+incomplete "high deactivation" 0
+"if it was really happening I think I would be scared" "high deactivation" 0
+"Shot info -> Canon 5D Mark ii & Sigma 150-600mm C f/9 . 1/60 sec . ISO 400 **instagram**" "high activation" 0
+sadly "high deactivation" 0
+"Wifi is not connected at the moment" "medium deactivation" 0
+"yeah we made a" "high activation" 0
+"She was very sympathetic when I was sick." "high activation" 0
+"He hates the Falcon because his dad would leave him all the time on it as a kid" "high deactivation" 0
+"that's insane." "high activation" 1
+"Waiting on the charity shoppers before turning into law arrgghh! I used to enjoy looking @ acts and stuff" "high activation" 1
+"I feel really terrified because I probably think they're gonna attack and rape me" "high activation" 1
+"Just had my first bit of spam on Flickr! URL " "high deactivation" 0
+"quite calm really" "low activation" 0
+"You're only as young as you feel" "high activation" 0
+"that incident has left me broken and shattered" "high deactivation" 1
+"I did that a lot as well. I always loved going with her." "high activation" 0
+"At home and working again. Gonna be a crazy busy week and a half before I go on holiday" "high activation" 1
+"that's no longer our trouble" "high deactivation" 0
+faultless "high activation" 0
+" U_M Yaay Jodi so great to see you on here too! Welcome to Twitterland!!" "high activation" 1
+"Not against us this season, apparently." "high activation" 0
+"us avon galz rock!" "high activation" 1
+"it will make me feel aroused" "high activation" 1
+"Have you had any fever or chills?." "high activation" 0
+"very relaxed calm" "high activation" 0
+" U_M well hmph. not fair its not shining enough here." "high deactivation" 0
+"We bought 2 and only one would go together properly. Returned the other as it would not line up on the arm holes." "high deactivation" 0
+"Flights, rentals." "high activation" 0
+"what a great idea i suggest they use it to insulate all the homes of the [NAME] administration and of [NAME]!!" "high activation" 1
+"thank God my tutoring teacher thinks that all i do on my Laptop is work LOL ALL HAIL wireless connections! ROFLMAO U_M cu" "high activation" 1
+"INFJ hands down ""Being organised brings joy to me""" "high activation" 0
+"Phone didn't come in the original box as they advertised. That's ok I can live with but the main problem was the mic and speakers won't work when I place a call. I tried few tricks suggested out there on the internet but still it didn't work." "high deactivation" 0
+"wonder at" "high activation" 0
+"Dammit no Worldwide Telescope client for Mac. Sort it out TDC" "high deactivation" 0
+"this makes me feel worried" "high deactivation" 0
+"I am so tired now just gonna hit the bed." "high deactivation" 1
+"I feel anxious and scared for my safety" "high activation" 1
+"And if you are traveling soon, I can help you find that perfect hotel." "high activation" 0
+"a bit excited and happy, and it makes me want to go back" "high activation" 1
+"The Get Shorty show when he subs in for the guy at the table reading and destroys everybody with his skills is so good." "high activation" 0
+disaster "high activation" 0
+"last night I live" "high activation" 1
+"this makes me feel quite relaxed and happy as all major scenes do" "high activation" 0
+" I somewhat look forward to the concert." "high activation" 0
+"this image makes me feel so happy I love dogs I absolutely love dogs and I think he's so happy and he just makes me smile" "high activation" 0

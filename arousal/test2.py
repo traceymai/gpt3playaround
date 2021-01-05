@@ -8,13 +8,11 @@ from gpt import GPT
 from gpt import Example
 from unidecode import unidecode
 from string import whitespace
-
 def clean_text(copy_df):
     urlMention = "URL"
     email = "E_M"
     userMention = "U_M"
     space = " "
-
     # Replace 2 or more consecutive commas with 1:
     copy_df.replace(r",+", r",", regex = True, inplace = True)
     # Replace URLs with urlMention
@@ -70,6 +68,18 @@ def map_to_neutral(num):
     elif num == -2:
         return "high deactivation"
 
+def map_back(astr):
+    if astr == "high activation":
+        return float(1)
+    elif astr == "medium activation":
+        return float(0)
+    elif astr == "high deactivation":
+        return float(-2)
+    elif astr == "medium deactivation":
+        return float(-1)
+    else:
+        return float("NaN")
+
 def transform_txt(inputf, trainingf): # n is the number of randomly chosen input instances wanted for each sentiment category
     """
     This function reads input sentences and associated sentiments 
@@ -78,9 +88,9 @@ def transform_txt(inputf, trainingf): # n is the number of randomly chosen input
     #df_used = df_train_all.groupby("Sentiment_class_label").head(num_training_per_cate).reset_index(drop = True)
     #df_used["Sentiment_class_label"] = df_used["Sentiment_class_label"].apply(lambda x: change_labels(x))
     #df_used = clean_text(df_used)
-    all_data = pd.read_csv(inputf, skiprows = 20, encoding = "utf8", sep = ":->", engine = "python", header = None)
-    all_data.columns = ["Arousal_class_label", "Phrase_text"]
-    all_data["Arousal_class_label"] = all_data["Arousal_class_label"].apply(lambda x: change_labels(x))
+    all_data = pd.read_csv(inputf, encoding = "utf8", sep = ":->", engine = "python", header = None)
+    all_data.columns = ["Sentiment_class_label", "Phrase_text"]
+    #all_data["Arousal_class_label"] = all_data["Arousal_class_label"].apply(lambda x: change_labels(x))
     #all_data["Arousal_class_label"] = all_data["Arousal_class_label"].apply(lambda x: map_to_neutral(x))
     all_data = clean_text(all_data)
     df_train = pd.read_csv(trainingf, skiprows = 1, nrows = 18, encoding = "utf8", sep = ":->", engine = "python", header = None)
@@ -104,7 +114,7 @@ def write_prompts(all_data, gpt_instance):
     all_data['gpt_output'] = all_data["Phrase_text"].apply(lambda x: gpt_instance.submit_request(x).choices[0].text.lower().strip())
     #all_data_used = all_data[all_data['gpt_output'] != "mixed"]
     #mixed_df = all_data[all_data['gpt_output'] == "mixed"]
-    all_data['matched'] = np.where(all_data['Arousal_class_label'] == all_data['gpt_output'], 1, 0)
+    #all_data['matched'] = np.where(all_data['Arousal_class_label'] == all_data['gpt_output'], 1, 0)
     #df_used['gpt_output'] = df_used['gpt_output'].apply(lambda x: bold_abbrev(x))
     # dropping Sentiment_class_label column
     #df_used.drop(['Sentiment_class_label'], axis = 1)
@@ -120,17 +130,19 @@ def line_prepender(filename, line):
 def write_output(engine, temp, max_tokens, all_data, df_used):
     #def write_output(engine, temp, max_tokens, all_data, num_training_per_cate):
     gpt = GPT(engine = engine, temperature = temp, max_tokens = max_tokens, output_prefix = "Sentiment:")
-    #gpt = add_examples(gpt, df_used)
+    gpt = add_examples(gpt, df_used)
     out_df = write_prompts(all_data, gpt)
+    out_df = out_df[["Sentiment_class_label", "gpt_output", "Phrase_text"]]
+    out_df["gpt_output"] = out_df["gpt_output"].apply(lambda x: map_back(x))
     #print(out_df)
-    out_df.drop("Arousal_class_label", axis = 1, inplace = True)
-    accuracy = ((np.sum(out_df['matched'])) / (out_df.shape[0])) * 100
-    print("Accuracy: {}".format(accuracy))
-    out_df.to_csv('out_original_prompt_zeroshot.txt', header = ['PHRASE_TEXT', 'GPT_OUTPUT', 'MATCHED'], index = None, sep = " ", mode = 'a')
-    print("###" * 50)
+    #out_df.drop("Arousal_class_label", axis = 1, inplace = True)
+    #accuracy = ((np.sum(out_df['matched'])) / (out_df.shape[0])) * 100
+    #print("Accuracy: {}".format(accuracy))
+    out_df.to_csv('outfinal.txt', header = False, index = None, sep = ",", mode = 'a')
+    #print("###" * 50)
     #print("Instances GPT-3 categorised as Mixed:")
     #mixed_df.to_csv("outzeroshot.txt", sep = " ", mode = "a")
-    line_prepender('out_original_prompt_zeroshot.txt', "ACCURACY: {:.2f}, TEMPERATURE: {}".format(accuracy, temp))
+    line_prepender('outfinal.txt', "VALENCE,AROUSAL,SENTENCE")
 
 def main(inputf, trainingf, temp = None, max_tokens = 6):
     with open('GPT_SECRET_KEY.json') as f:
@@ -140,7 +152,7 @@ def main(inputf, trainingf, temp = None, max_tokens = 6):
     write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, df_used = df_used)
 
 if __name__ == "__main__":
-    inputf = "arousal_train.txt"
+    inputf = "sm_text_sentiment_training_eg.txt"
     trainingf = "arousal_train.txt"
     try:
         temp = float(input("Enter desired temperature setting (a floating point number from 0.0 to 1.0) (Hit \"Enter\" to set at 0.0): "))

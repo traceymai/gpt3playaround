@@ -1,46 +1,46 @@
-1.0,unbiased
-1.0,umm neutral maybe a little happy
-1.0,neutral fine happy
-1.0,innocuous
-1.0,diversified
-1.0,balanced
-0.0,whiteboard
-0.0,i'm a neutral sentence
-0.0,describe
-0.0,This is a neutral sentence
-0.0,I haven't tried that particular product.
--1.0,untested
--1.0,unsupported
--1.0,unresponsive
--1.0,unresolved
--1.0,unqualified
--1.0,uninteresting
--1.0,unintelligible
--1.0,unimportant
--1.0,unfamiliar
--1.0,undefined
--1.0,undecided
--1.0,unclear
--1.0,unavailable
--1.0,unable
--1.0,nothing
--1.0,nonexistent
--1.0,no answer for that
--1.0,irrelevant
--1.0,invalid
--1.0,intermittent
--1.0,insufficient
--1.0,indifference
--1.0,incoherent
--1.0,inaudible
--1.0,inappropriate
--1.0,inaccurate
--1.0,improper
--1.0,ill-defined
--1.0,ignore
--1.0,evasive
--1.0,erroneous
--1.0,defunct
--1.0,ambivalent
--1.0,abnormal
--1.0,Indifferent
+1.0:->unbiased
+1.0:->umm neutral maybe a little happy
+1.0:->neutral fine happy
+1.0:->innocuous
+1.0:->diversified
+1.0:->balanced
+0.0:->whiteboard
+0.0:->i'm a neutral sentence
+0.0:->describe
+0.0:->This is a neutral sentence
+0.0:->I haven't tried that particular product.
+-1.0:->untested
+-1.0:->unsupported
+-1.0:->unresponsive
+-1.0:->unresolved
+-1.0:->unqualified
+-1.0:->uninteresting
+-1.0:->unintelligible
+-1.0:->unimportant
+-1.0:->unfamiliar
+-1.0:->undefined
+-1.0:->undecided
+-1.0:->unclear
+-1.0:->unavailable
+-1.0:->unable
+-1.0:->nothing
+-1.0:->nonexistent
+-1.0:->no answer for that
+-1.0:->irrelevant
+-1.0:->invalid
+-1.0:->intermittent
+-1.0:->insufficient
+-1.0:->indifference
+-1.0:->incoherent
+-1.0:->inaudible
+-1.0:->inappropriate
+-1.0:->inaccurate
+-1.0:->improper
+-1.0:->ill-defined
+-1.0:->ignore
+-1.0:->evasive
+-1.0:->erroneous
+-1.0:->defunct
+-1.0:->ambivalent
+-1.0:->abnormal
+-1.0:->Indifferent
