@@ -103,9 +103,8 @@ class GPT:
 
     def craft_query(self, prompt):
         """Creates the query for the API request."""
-        q = "Given a tweet, classify it into 4 categories: positive, negative, neutral or mixed" + "\n"
-        q += self.get_prime_text(
-        ) + self.input_prefix + prompt + self.input_suffix
+        q = "Given a tweet, classify it into one of 4 categories: Positive, Negative, Neutral, or Mixed." + "\n"
+        q += self.input_prefix + prompt + self.input_suffix
         if self.append_output_prefix_to_query:
             q = q + self.output_prefix
 

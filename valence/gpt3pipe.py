@@ -82,7 +82,7 @@ def transform_txt(filename, num_training_per_cate): # n is the number of randoml
     """
     This function reads input sentences and associated sentiments 
     """
-    df_train_all = pd.read_csv(filename, skiprows=1, header = 0, encoding = "utf8", sep = ":->", nrows = 28, engine = "python")
+    #df_train_all = pd.read_csv(filename, skiprows=1, header = 0, encoding = "utf8", sep = ":->", nrows = 28, engine = "python")
     #df_used = df_train_all.groupby("Sentiment_class_label").head(num_training_per_cate).reset_index(drop = True)
     #df_used["Sentiment_class_label"] = df_used["Sentiment_class_label"].apply(lambda x: change_labels(x))
     #df_used = clean_text(df_used)
@@ -142,8 +142,8 @@ def main(num_testing_per_cate, num_training_per_cate = 0, temp = None, max_token
         data = json.load(f)
     openai.api_key = data["API_KEY"]
     filename = "train_test_gpt3.txt"
-    #all_data = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
-    all_data, df_used = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
+    all_data = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
+    #all_data, df_used = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
     # if training data is used (n indicating number of training instances per category of sentiment)
     write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, num_training_per_cate = num_training_per_cate)
     #write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, df_used = df_used, num_training_per_cate = num_training_per_cate)

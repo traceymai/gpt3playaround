@@ -1,0 +1,68 @@
+###Train###
+Sentiment_class_label:->Phrase_text
+1.0:->Sounds pretty optimistic... I'll believe it when I see it!
+1.0:->Sounds like a good deal to me. Where do I sign?
+1.0:->Sorry to hear that, glad you're feeling better. Take your time ofc; is there anything we non knowing anything people can do to help?
+1.0:->Soothing
+1.0:->Sonofabitch that makes it so much better [NAME] Edit: you talking about this?
+1.0:->Song Of The Day..... RUN DON'T WALK by HEY MONDAY.... cassadee rocks out like 24/7 love her
+1.0:->Sometimes all you need is to know someone else has been there and believes you can do it too. You got this. Keep it up!
+0.0:->Somewhere in Ohiooooooooo*
+0.0:->Speech synthesis is the artificial production of human speech.
+0.0:->Soul Machines uses neural networks to give me a virtual nervous system, so I can learn and react in real time.
+0.0:->Sorry to hear that, I'll try and get you up and running again now.
+0.0:->Sorry I couldn't hear you
+0.0:->Sorry *ss Crabtree is there so it's a possibility.
+0.0:->Soon, we begin to find ourselves in a different, much darker movie than what we thought we stumbled into,
+-1.0:->My hair is pissing me off so much I just want to cut it all off.
+-1.0:->My girlfriend barely tolerates me showering in the morning, she'd be furious if I'd let an alarm ring while I'm away. And rightfully so.
+-1.0:->My five year old and I love games and this looked adorable but its not .
+-1.0:->My first proper day working in my own office and I was 10 minutes late for work
+-1.0:->My fever just gone from bad to worse  ujan siyalan
+-1.0:->My dog is smarter than you
+-1.0:->My comment wasn't aimed at you... try to relax
+2.0:->I like it this way but I fear it might not be the best approach moving forward.
+2.0:->I love him but at the same time, hmm, he did do a lot of wrong things to me.
+2.0:->The weather is good but I'm feeling down.
+2.0:->AI is technologically advanced, however some people think it can also destroy the world.
+2.0:->She's bawling her eyes out while I'm just here laughing out loud.
+2.0:->I finally got the job I wanted, why am I still feeling sad?
+2.0:->She likes it when her boyfriend comes visit her in the weekend, but doesn't like it when he sleeps too much.
+###Test###
+Sentiment_class_label:->Phrase_text
+1.0:->Something cute and fluffy who gets to nap a lot, lol.
+1.0:->Someone should do a “what posting any related [NAME] romance is like.” The comments in these posts are a real treat.
+1.0:->Some people are just very special lmao
+1.0:->Some music would be good! That must've been on NASA's mind too, when they beamed The Beatles 'Across the Universe' into deep space.
+1.0:->Some great advice right here!!!!!! I forgot about this
+1.0:->Some "Mean Girls" style backstabbing will be a great B-plot for this new season!
+1.0:->Solid. Giving the other customer sauces for free was especially petty, I like.
+1.0:->So? [NAME] was and is a far higher rated player than [NAME] as much as I like him.
+1.0:->So? Keep doing it anyway. Who don't worry about the downvotes.
+1.0:->So...... SOOOOOOOOOO glad Atlanta came back and beat the Bucs. Because of it, my beloved [NAME] are coming to Tampa.
+0.0:->Something something broken arms
+0.0:->Something Something Something, space of aids
+0.0:->Someone should make a religion out of this
+0.0:->Someone has a story.
+0.0:->Someone had to do it when [NAME] got cut
+0.0:->Some of the broad strokes are the same, particularly Rob flailing in the aftermath of her number-one heartbreak, courtesy of ex-fiancé Mac, but many are tweaked.
+0.0:->Soft boiled huh?
+0.0:->So? Many people don’t resemble their parents.
+0.0:->So... For me it changed earlier yesterday... Maybe it's a location/language thing
+0.0:->So you could say that this is one of very few subreddits that manages to somewhat avoid political spins and that the original commentor is a worthless shill
+-1.0:->My cd hasn't come and probably won't till tomorrow  not happy now pre ordred that weeks ago !
+-1.0:->My calamari salad was dripping in a awful dressing. I would definitely not be returning.
+-1.0:->My back is sore! Not done anythin to hurt it either  x
+-1.0:->My adopted daughter told me, "You can't tell me what to do. You're not my dad." While true, it still stung.
+-1.0:->My [NAME] says he hates everything right now, too. He's caught himself a few times from saying he hates me.
+-1.0:->My OpenOffice keeps freezing on me.
+-1.0:->My Bike got stolen..I am Fed up with the security here
+-1.0:->My #1 boss (Actually i have 2) just told me he'd better work alone...  And I'd better work with my #2 boss... hate dual subordination
+-1.0:->Must be nice my seats were in that area... sadly I decided to go to the bathroom. #PTSD
+-1.0:->Mrs Aragondade hasn't taught me anything and I'm going to fail chem
+
+
+
+
+
+

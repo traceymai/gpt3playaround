@@ -9,24 +9,6 @@ from gpt import Example
 from unidecode import unidecode
 from string import whitespace
 
-""" def handle_emojis(df):
-    emoPos = " [EMO_POS] "
-    emoNeg = " [EMO_NEG] "
-    # Smile     :), : ), :-), (:, (:, (-:, : ')
-    df.replace(r"(:\s?\)|:-\)|\(\s?:|\(-:|:\'\))", emoPos, regex = True, inplace = True)
-    # Laugh     :D, : D, : -D, xD, X - Dz, x - D, XD
-    df.replace(r"(:\s?-?\s?d|x\s?-\s?dz|x\s?-\s?d)", emoPos, regex = True, inplace = True)
-    # Love     <3, < 3, :*
-    df.replace(r"(<3|:\*)", emoPos, regex = True, inplace = True)
-    # Wink    ; -), ;), ; -D, ; D, (; , (-;
-    df.replace(r"(;-?\)|;-?D|\(-?;)", emoPos, regex = True, inplace = True)
-    # Sad     :-(, : (, :(, ) : , ) - :
-    df.replace(r"(:\s?\(|:-\(|\)\s?:|\)-:)", emoNeg, regex = True, inplace = True)
-    # Cry     :, (, :'(, :"(
-    df.replace(r"(:,\s?\(|:\'\s?\(|:\"\s?\()", emoNeg, regex = True, inplace = True)
- """
-#from unidecode import unidecode
-#import pandas as pd
 def clean_text(copy_df):
     urlMention = "URL"
     email = "E_M"
@@ -70,48 +52,61 @@ def clean_text(copy_df):
     return copy_df
 def change_labels(num):
     if num == 1:
-        return "positive"
+        return "high activation"
     elif num == 0:
-        return "neutral"
+        return "medium activation"
     elif num == -1:
-        return "negative"
-    elif num == 2:
-        return "mixed"
+        return "medium deactivation"
+    elif num == -2:
+        return "high deactivation"
 
-def transform_txt(filename, num_training_per_cate): # n is the number of randomly chosen input instances wanted for each sentiment category
+def map_to_neutral(num):
+    if num == 1:
+        return "high activation"
+    elif num == 0 or num == -1:
+        return "neutral"
+    elif num == -2:
+        return "high deactivation"
+
+def transform_txt(inputf, trainingf): # n is the number of randomly chosen input instances wanted for each sentiment category
     """
     This function reads input sentences and associated sentiments 
     """
-    df_train_all = pd.read_csv(filename, skiprows=1, header = 0, encoding = "utf8", sep = ":->", nrows = 28, engine = "python")
+    #df_train_all = pd.read_csv(filename, skiprows=1, header = 0, encoding = "utf8", sep = ":->", nrows = 28, engine = "python")
     #df_used = df_train_all.groupby("Sentiment_class_label").head(num_training_per_cate).reset_index(drop = True)
     #df_used["Sentiment_class_label"] = df_used["Sentiment_class_label"].apply(lambda x: change_labels(x))
     #df_used = clean_text(df_used)
-    all_data = pd.read_csv(filename, skiprows = 31, header = 0, encoding = "utf8", sep = ":->", nrows = 30, engine = "python")
-    all_data["Sentiment_class_label"] = all_data["Sentiment_class_label"].apply(lambda x: change_labels(x))
+    all_data = pd.read_csv(inputf, skiprows = 20, encoding = "utf8", sep = ":->", engine = "python", header = None)
+    all_data.columns = ["Arousal_class_label", "Phrase_text"]
+    all_data["Arousal_class_label"] = all_data["Arousal_class_label"].apply(lambda x: change_labels(x))
+    #all_data["Arousal_class_label"] = all_data["Arousal_class_label"].apply(lambda x: map_to_neutral(x))
     all_data = clean_text(all_data)
-    """ print("df_used")
-    print(df_used)
+    df_train = pd.read_csv(trainingf, skiprows = 1, nrows = 18, encoding = "utf8", sep = ":->", engine = "python", header = None)
+    df_train.columns = ["Arousal_class_label", "Phrase_text"]
+    df_train["Arousal_class_label"] = df_train["Arousal_class_label"].apply(lambda x: change_labels(x))
+    #df_train["Arousal_class_label"] = df_train["Arousal_class_label"].apply(lambda x: map_to_neutral(x))
+    df_train = clean_text(df_train)
+    print("df_trained")
+    print(df_train)
     print("all_data")
-    print(all_data) """
-    return all_data 
-        #df_used
-#transform_txt("train_test_gpt3.txt", 1)
-  
+    print(all_data)
+    return all_data, df_train
+
 def add_examples(gpt_instance, df_subset): # n is the number of Example instances to "train" GPT-3 on
     for row in range(df_subset.shape[0]):
-        gpt_instance.add_example(Example(df_subset['Phrase_text'][row], df_subset['Sentiment_class_label'][row]))
+        gpt_instance.add_example(Example(df_subset['Phrase_text'][row], df_subset['Arousal_class_label'][row]))
     return gpt_instance
     
 # A function to write prompt into GPT-3 API:
 def write_prompts(all_data, gpt_instance):
     all_data['gpt_output'] = all_data["Phrase_text"].apply(lambda x: gpt_instance.submit_request(x).choices[0].text.lower().strip())
-    all_data_used = all_data[all_data['gpt_output'] != "mixed"]
-    mixed_df = all_data[all_data['gpt_output'] == "mixed"]
-    all_data_used['matched'] = np.where(all_data_used['Sentiment_class_label'] == all_data_used['gpt_output'], 1, 0)
+    #all_data_used = all_data[all_data['gpt_output'] != "mixed"]
+    #mixed_df = all_data[all_data['gpt_output'] == "mixed"]
+    all_data['matched'] = np.where(all_data['Arousal_class_label'] == all_data['gpt_output'], 1, 0)
     #df_used['gpt_output'] = df_used['gpt_output'].apply(lambda x: bold_abbrev(x))
     # dropping Sentiment_class_label column
     #df_used.drop(['Sentiment_class_label'], axis = 1)
-    return all_data_used, mixed_df
+    return all_data
 
 # Function to write the accuracy at the beginning of output text file
 def line_prepender(filename, line):
@@ -120,47 +115,34 @@ def line_prepender(filename, line):
         f.seek(0, 0)
         f.write(line.rstrip('\r\n') + '\n' + content)
 
-#def write_output(engine, temp, max_tokens, all_data, df_used, num_training_per_cate):
-def write_output(engine, temp, max_tokens, all_data, num_training_per_cate):
+def write_output(engine, temp, max_tokens, all_data, df_used):
+    #def write_output(engine, temp, max_tokens, all_data, num_training_per_cate):
     gpt = GPT(engine = engine, temperature = temp, max_tokens = max_tokens, output_prefix = "Sentiment:")
-    #gpt = add_examples(gpt, df_used)
-    out_df, mixed_df = write_prompts(all_data, gpt)
+    gpt = add_examples(gpt, df_used)
+    out_df = write_prompts(all_data, gpt)
     #print(out_df)
-    out_df.drop("Sentiment_class_label", axis = 1, inplace = True)
+    out_df.drop("Arousal_class_label", axis = 1, inplace = True)
     accuracy = ((np.sum(out_df['matched'])) / (out_df.shape[0])) * 100
     print("Accuracy: {}".format(accuracy))
-    out_df.to_csv('outzeroshot.txt', header = ['PHRASE_TEXT', 'GPT_OUTPUT', 'MATCHED'], index = None, sep = " ", mode = 'a')
+    out_df.to_csv('out11.txt', header = ['PHRASE_TEXT', 'GPT_OUTPUT', 'MATCHED'], index = None, sep = " ", mode = 'a')
     print("###" * 50)
-    print("Instances GPT-3 categorised as Mixed:")
-    mixed_df.to_csv("outzeroshot.txt", sep = " ", mode = "a")
-    line_prepender('outzeroshot.txt', "ACCURACY: {:.2f}, TEMPERATURE: {}".format(accuracy, temp))
+    #print("Instances GPT-3 categorised as Mixed:")
+    #mixed_df.to_csv("outzeroshot.txt", sep = " ", mode = "a")
+    line_prepender('out11.txt', "ACCURACY: {:.2f}, TEMPERATURE: {}".format(accuracy, temp))
 
-
-
-def main(num_testing_per_cate, num_training_per_cate = 0, temp = None, max_tokens = 6):
+def main(inputf, trainingf, temp = None, max_tokens = 6):
     with open('GPT_SECRET_KEY.json') as f:
         data = json.load(f)
     openai.api_key = data["API_KEY"]
-    filename = "train_test_gpt3.txt"
-    #all_data = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
-    all_data, df_used = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
-    # if training data is used (n indicating number of training instances per category of sentiment)
-    write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, num_training_per_cate = num_training_per_cate)
-    #write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, df_used = df_used, num_training_per_cate = num_training_per_cate)
+    all_data, df_used = transform_txt(inputf = inputf, trainingf = trainingf)
+    write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, df_used = df_used)
 
-        
 if __name__ == "__main__":
-    num_testing_per_cate = int(input("Enter number of randomly chosen testing instances per each sentiment category (an int): "))
-    # This is always 10
-    num_training_per_cate = int(input("Enter number of randomly chosen training instances per each sentiment category (an int): "))
-    # This is 1, 3, 5, 7
+    inputf = "arousal_train.txt"
+    trainingf = "arousal_train.txt"
     try:
         temp = float(input("Enter desired temperature setting (a floating point number from 0.0 to 1.0) (Hit \"Enter\" to set at 0.0): "))
     except SyntaxError:
         pass
     max_tokens = 3
-    main(num_testing_per_cate, num_training_per_cate, temp, max_tokens)
-
-
-
-
+    main(inputf, trainingf, temp, max_tokens)

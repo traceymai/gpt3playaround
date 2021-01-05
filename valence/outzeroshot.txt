@@ -1,0 +1,33 @@
+ACCURACY: 70.00, TEMPERATURE: 0.0
+PHRASE_TEXT GPT_OUTPUT MATCHED
+"Something cute and fluffy who gets to nap a lot, lol." positive 1
+"Some people are just very special lmao" positive 1
+"Some music would be good! That must've been on NASA's mind too, when they beamed The Beatles 'Across the Universe' into deep space." positive 1
+"Some great advice right here!! I forgot about this" positive 1
+"So? [NAME] was and is a far higher rated player than [NAME] as much as I like him." negative 0
+"So? Keep doing it anyway. Who don't worry about the downvotes." positive 1
+"So SOO glad Atlanta came back and beat the Bucs. Because of it, my beloved [NAME] are coming to Tampa." positive 1
+"Something something broken arms" negative 0
+"Something Something Something, space of aids" negative 0
+"Someone has a story." positive 0
+"Someone had to do it when [NAME] got cut" negative 0
+"So you could say that this is one of very few subreddits that manages to somewhat avoid political spins and that the original commentor is a worthless shill" negative 0
+"My cd hasn't come and probably won't till tomorrow not happy now pre ordred that weeks ago !" negative 1
+"My calamari salad was dripping in a awful dressing. I would definitely not be returning." negative 1
+"My back is sore! Not done anythin to hurt it either x" negative 1
+"My adopted daughter told me, ""You can't tell me what to do. You're not my dad."" While true, it still stung." negative 1
+"My OpenOffice keeps freezing on me." negative 1
+"My Bike got stolen I am Fed up with the security here" negative 1
+"My 1 boss (Actually i have 2) just told me he'd better work alone And I'd better work with my 2 boss hate dual subordination" negative 1
+"Mrs Aragondade hasn't taught me anything and I'm going to fail chem" negative 1
+ Sentiment_class_label Phrase_text gpt_output
+1 positive "Someone should do a ""what posting any related [NAME] romance is like."" The comments in these posts are a real treat." mixed
+5 positive "Some ""Mean Girls"" style backstabbing will be a great B-plot for this new season!" mixed
+6 positive "Solid. Giving the other customer sauces for free was especially petty, I like." mixed
+12 neutral "Someone should make a religion out of this" mixed
+15 neutral "Some of the broad strokes are the same, particularly Rob flailing in the aftermath of her number-one heartbreak, courtesy of ex-fiancé Mac, but many are tweaked." mixed
+16 neutral "Soft boiled huh?" mixed
+17 neutral "So? Many people don't resemble their parents." mixed
+18 neutral "So For me it changed earlier yesterday Maybe it's a location/language thing" mixed
+24 negative "My [NAME] says he hates everything right now, too. He's caught himself a few times from saying he hates me." mixed
+28 negative "Must be nice my seats were in that area sadly I decided to go to the bathroom. PTSD" mixed

@@ -25,8 +25,7 @@ from string import whitespace
     # Cry     :, (, :'(, :"(
     df.replace(r"(:,\s?\(|:\'\s?\(|:\"\s?\()", emoNeg, regex = True, inplace = True)
  """
-#from unidecode import unidecode
-#import pandas as pd
+
 def clean_text(copy_df):
     urlMention = "URL"
     email = "E_M"
@@ -70,30 +69,33 @@ def clean_text(copy_df):
     return copy_df
 def change_labels(num):
     if num == 1:
-        return "positive"
+        return "High Activation"
     elif num == 0:
-        return "neutral"
+        return "Medium Activation"
     elif num == -1:
-        return "negative"
-    elif num == 2:
-        return "mixed"
+        return "Medium Deactivation"
+    elif num == -2:
+        return "High Deactivation"
 
 def transform_txt(filename, num_training_per_cate): # n is the number of randomly chosen input instances wanted for each sentiment category
     """
     This function reads input sentences and associated sentiments 
     """
-    df_train_all = pd.read_csv(filename, skiprows=1, header = 0, encoding = "utf8", sep = ":->", nrows = 28, engine = "python")
+    #df_train_all = pd.read_csv(filename, skiprows=1, header = 0, encoding = "utf8", sep = ":->", nrows = 28, engine = "python")
     #df_used = df_train_all.groupby("Sentiment_class_label").head(num_training_per_cate).reset_index(drop = True)
     #df_used["Sentiment_class_label"] = df_used["Sentiment_class_label"].apply(lambda x: change_labels(x))
     #df_used = clean_text(df_used)
-    all_data = pd.read_csv(filename, skiprows = 31, header = 0, encoding = "utf8", sep = ":->", nrows = 30, engine = "python")
-    all_data["Sentiment_class_label"] = all_data["Sentiment_class_label"].apply(lambda x: change_labels(x))
+    all_data = pd.read_csv(filename, encoding = "utf8", sep = ":->", engine = "python")
+    all_data.columns = ["Arousal_class_label", "Phrase_text"]
+    all_data["Arousal_class_label"] = all_data["Arousal_class_label"].apply(lambda x: change_labels(x))
     all_data = clean_text(all_data)
     """ print("df_used")
     print(df_used)
     print("all_data")
     print(all_data) """
-    return all_data 
+    return all_data
+
+print(transform_txt("arousal_scores.txt", 3))
         #df_used
 #transform_txt("train_test_gpt3.txt", 1)
   
@@ -141,9 +143,9 @@ def main(num_testing_per_cate, num_training_per_cate = 0, temp = None, max_token
     with open('GPT_SECRET_KEY.json') as f:
         data = json.load(f)
     openai.api_key = data["API_KEY"]
-    filename = "train_test_gpt3.txt"
-    #all_data = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
-    all_data, df_used = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
+    filename = "arousal_scores.txt"
+    all_data = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
+    #all_data, df_used = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
     # if training data is used (n indicating number of training instances per category of sentiment)
     write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, num_training_per_cate = num_training_per_cate)
     #write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, df_used = df_used, num_training_per_cate = num_training_per_cate)
@@ -153,7 +155,7 @@ if __name__ == "__main__":
     num_testing_per_cate = int(input("Enter number of randomly chosen testing instances per each sentiment category (an int): "))
     # This is always 10
     num_training_per_cate = int(input("Enter number of randomly chosen training instances per each sentiment category (an int): "))
-    # This is 1, 3, 5, 7
+    # This is 1 or 0
     try:
         temp = float(input("Enter desired temperature setting (a floating point number from 0.0 to 1.0) (Hit \"Enter\" to set at 0.0): "))
     except SyntaxError:

@@ -1,0 +1,6 @@
+ACCURACY: 25.00, TEMPERATURE: 0.0
+PHRASE_TEXT GPT_OUTPUT MATCHED
+"this image makes me feel so happy I love dogs I absolutely love dogs and I think he's so happy and he just makes me smile" "high activation" 0
+"this makes me feel quite relaxed and happy as all major scenes do" "high activation" 0
+"I feel anxious and scared for my safety" "high deactivation" 0
+"I am so tired now just gonna hit the bed." "high deactivation" 1

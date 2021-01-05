@@ -1,0 +1,43 @@
+ACCURACY: 56.10, TEMPERATURE: 0.0
+PHRASE_TEXT GPT_OUTPUT MATCHED
+"is going to get some coffe &quot;need more power&quot; ahahah" neutral 1
+"this makes me feel sad" "high deactivation" 0
+incomplete incomplete 0
+"if it was really happening I think I would be scared" "high deactivation" 0
+"Shot info -> Canon 5D Mark ii & Sigma 150-600mm C f/9 . 1/60 sec . ISO 400 **instagram**" neutral 1
+sadly "high deactivation" 0
+"Wifi is not connected at the moment" neutral 1
+"yeah we made a" neutral 1
+"that's insane." neutral 0
+"Waiting on the charity shoppers before turning into law arrgghh! I used to enjoy looking @ acts and stuff" "high deactivation" 0
+"I feel really terrified because I probably think they're gonna attack and rape me" "high activation" 1
+"So do you remember my password and personal info in your digital brain ?" "high activation" 0
+"Just had my first bit of spam on Flickr! URL " neutral 0
+"quite calm really" neutral 0
+"You're only as young as you feel" neutral 1
+"I did that a lot as well. I always loved going with her." "high activation" 0
+"At home and working again. Gonna be a crazy busy week and a half before I go on holiday" neutral 0
+"that's no longer our trouble" neutral 1
+faultless neutral 1
+" U_M Yaay Jodi so great to see you on here too! Welcome to Twitterland!!" "high activation" 1
+"Not against us this season, apparently." neutral 1
+"us avon galz rock!" "high activation" 1
+"it will make me feel aroused" "high activation" 1
+"Have you had any fever or chills?." neutral 1
+"very relaxed calm" "high activation" 0
+" U_M well hmph. not fair its not shining enough here." neutral 1
+"We bought 2 and only one would go together properly. Returned the other as it would not line up on the arm holes." neutral 1
+"Flights, rentals." neutral 1
+"what a great idea i suggest they use it to insulate all the homes of the [NAME] administration and of [NAME]!!" "high activation" 1
+"thank God my tutoring teacher thinks that all i do on my Laptop is work LOL ALL HAIL wireless connections! ROFLMAO U_M cu" "high activation" 1
+"INFJ hands down ""Being organised brings joy to me""" "high activation" 0
+"Phone didn't come in the original box as they advertised. That's ok I can live with but the main problem was the mic and speakers won't work when I place a call. I tried few tricks suggested out there on the internet but still it didn't work." "high deactivation" 0
+"wonder at" neutral 1
+"Dammit no Worldwide Telescope client for Mac. Sort it out TDC" "high deactivation" 0
+"this makes me feel worried" "high activation" 0
+"I feel anxious and scared for my safety" "high activation" 1
+"And if you are traveling soon, I can help you find that perfect hotel." neutral 1
+"a bit excited and happy, and it makes me want to go back" "high activation" 1
+"The Get Shorty show when he subs in for the guy at the table reading and destroys everybody with his skills is so good." "high activation" 0
+disaster "high activation" 0
+"last night I live" "high activation" 1

@@ -1,0 +1,91 @@
+Sentiment_class_label:->Phrase_text
+1.0:->“kindness and compassion” [NAME]
+1.0:->“That’s also cute” I say as I look at the 5k in LEGO I’m hoarding
+1.0:->“I have no experience being mean” is probably one of the sweetest things that I have ever heard omg
+1.0:->“I am on the verge of exploding in my pants” “Hehe you’re cute :)” -her
+1.0:->“Enjoy your dinner”
+1.0:->“But [NAME] helped the Browns win more games that’ll last season...” SLAP!!!
+1.0:->zeal
+1.0:->youthful
+1.0:->youre awesome buddy!
+1.0:->your voice is beautiful
+1.0:->your vehicle is pretty!
+1.0:->your beautiful
+1.0:->you're very fun
+1.0:->you're so smart
+1.0:->you're so funny
+1.0:->you're so down to earth.
+1.0:->you're smart
+1.0:->you're pretty much amazing. your music is crazy good. i wish i could see you in dc but i have camp
+1.0:->you're personality is so bubbly.
+1.0:->you're perfectly imperfect.
+1.0:->you're my idol man.
+1.0:->you're missed around here.. xoxo peace and love!
+1.0:->you're doing a really good job
+1.0:->you're cute and I'll hear from you soon
+1.0:->you're beautiful
+1.0:->you're aboslutely a dream.
+1.0:->you're a rare soul.
+1.0:->you will SO love it! so everything alright with you?
+1.0:->you were really helpful, thanks
+1.0:->you were GREAT in Star Trek..
+0.0:->“Tonight” begins as an earnest hymn, with Elton John-style piano and 2010-vintage AutoTune.
+0.0:->“My Own Dance” sums up where Kesha’s head is at right now when she looks in the mirror and gives herself a pep talk.
+0.0:->“Legal” and “real” are different words.
+0.0:->“Honey” is a little laid-back guitar R&B in the mode of that old-school bluesman John Mayer.
+0.0:->“An eye for an eye” Proceeds to take 2 things away from killers
+0.0:->£141
+0.0:->zoom
+0.0:->your joke is
+0.0:->your bank account is now fully functional
+0.0:->your Neighbour
+0.0:->you? x
+0.0:->you're supposed to wait for the punchline of a joke
+0.0:->you're onnnn. talk sistahhh.
+0.0:->you're dead mate
+0.0:->you'd think more shows would use music from the game. mmm
+0.0:->you win the internet today
+0.0:->you want to call me like another half an hour 45 minutes
+0.0:->you owe us 100 nzd
+0.0:->you might to LOCATION
+0.0:->you me at sk2
+0.0:->you look like someone I know ?
+0.0:->you learn
+0.0:->you know.
+0.0:->you know we have a lot of
+0.0:->you just give us already high level
+0.0:->you have to listen to it again.
+0.0:->you have any problem
+0.0:->you have a question for me
+0.0:->you can't
+0.0:->you can ask networking
+-1.0:->“Inside sources” really don’t help the story even if this is true
+-1.0:->АliExpress bullsнit liar and fake seller!
+-1.0:->zombie
+-1.0:->zap
+-1.0:->yup, very scared
+-1.0:->yup, upset
+-1.0:->yup - he threw [NAME] under the bus with no guilt
+-1.0:->yucky
+-1.0:->your mom looks like a gigantic banana
+-1.0:->your engaging comversations sound more like scripted conversations
+-1.0:->your are just as dumb as your dumb voice
+-1.0:->you've showed me a happy dog but now it's a sad dog and now I'm sad
+-1.0:->you're the reason this country has to put directions on shampoo
+-1.0:->you're taking a long time which is annoying
+-1.0:->you're stupid
+-1.0:->you're sort of also worried about the danger of like
+-1.0:->you're sorry I think hey hey do you hear me
+-1.0:->you're so rude
+-1.0:->you're simply crap.
+-1.0:->you're pretty ugly
+-1.0:->you're not funny.
+-1.0:->you're not funny
+-1.0:->you're not coming back? why? r u serious? so random. Details girl!! I don't beleive it. sad if you're not
+-1.0:->you're not as funny as you think you are
+-1.0:->you're not answering my question
+-1.0:->you're misinformed
+-1.0:->you're mentally ill
+-1.0:->you're mental
+-1.0:->you're making me feel annoyed but the image is a happy one
+-1.0:->you're just a digital puppet
