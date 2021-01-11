@@ -50,6 +50,22 @@ def clean_text(copy_df):
     # Convert more than 2 letter repetitions to 2 letter: eg: funnnnny -> funny
     copy_df.replace(r'(.)\1{2,}', r'\1\1', regex = True, inplace = True)
     return copy_df
+
+def map_emotions(gpt_out):
+    HA = ['surprised', 'amazement', 'ecstasy', 'excited', 'rage', 'shock', 'terror', 'alert']
+    MA = ['tense', 'alarmed', 'frustrated', 'happy', 'delighted', 'nervous', 'fear', 'envy']
+    MD = ['disgusted', 'depressed', 'sad', 'content', 'relaxed', 'satisfied', 'serene', 'empathetic']
+    HD = ['bored', 'tired', 'calm', 'sleepy', 'sorrow', 'grief']
+    if gpt_out in HA:
+        return "high activation"
+    elif gpt_out in MA:
+        return "medium activation"
+    elif gpt_out in MD:
+        return "medium deactivation"
+    elif gpt_out in HD:
+        return "high deactivation"
+    else:
+        return gpt_out
 def change_labels(num):
     if num == 1:
         return "high activation"
@@ -112,6 +128,7 @@ def add_examples(gpt_instance, df_subset): # n is the number of Example instance
 # A function to write prompt into GPT-3 API:
 def write_prompts(all_data, gpt_instance):
     all_data['gpt_output'] = all_data["Phrase_text"].apply(lambda x: gpt_instance.submit_request(x).choices[0].text.lower().strip())
+    all_data['gpt_output'] = all_data['gpt_output'].apply(lambda x: map_emotions(x))
     #all_data_used = all_data[all_data['gpt_output'] != "mixed"]
     #mixed_df = all_data[all_data['gpt_output'] == "mixed"]
     #all_data['matched'] = np.where(all_data['Arousal_class_label'] == all_data['gpt_output'], 1, 0)
@@ -129,20 +146,20 @@ def line_prepender(filename, line):
 
 def write_output(engine, temp, max_tokens, all_data, df_used):
     #def write_output(engine, temp, max_tokens, all_data, num_training_per_cate):
-    gpt = GPT(engine = engine, temperature = temp, max_tokens = max_tokens, output_prefix = "Sentiment:")
-    gpt = add_examples(gpt, df_used)
+    gpt = GPT(engine = engine, temperature = temp, max_tokens = max_tokens, output_prefix = "Sentiment:", append_output_prefix_to_query=True)
+    #gpt = add_examples(gpt, df_used)
     out_df = write_prompts(all_data, gpt)
     out_df = out_df[["Sentiment_class_label", "gpt_output", "Phrase_text"]]
     out_df["gpt_output"] = out_df["gpt_output"].apply(lambda x: map_back(x))
-    #print(out_df)
+    print(out_df)
     #out_df.drop("Arousal_class_label", axis = 1, inplace = True)
     #accuracy = ((np.sum(out_df['matched'])) / (out_df.shape[0])) * 100
     #print("Accuracy: {}".format(accuracy))
-    out_df.to_csv('outfinal.txt', header = False, index = None, sep = ",", mode = 'a')
+    out_df.to_csv('outfinal_descriptive_zeroshot.txt', header = False, index = None, sep = ",", mode = 'a')
     #print("###" * 50)
     #print("Instances GPT-3 categorised as Mixed:")
     #mixed_df.to_csv("outzeroshot.txt", sep = " ", mode = "a")
-    line_prepender('outfinal.txt', "VALENCE,AROUSAL,SENTENCE")
+    line_prepender('outfinal_descriptive_zeroshot.txt', "VALENCE,AROUSAL,SENTENCE")
 
 def main(inputf, trainingf, temp = None, max_tokens = 6):
     with open('GPT_SECRET_KEY.json') as f:

@@ -1,0 +1,501 @@
+SERVREP_ACCURACY: 0.54
+Phrase_text gpt_output ServRep_matched
+"Sorry I don't understand." neutral 0
+"Sorry but I didn't understand that." negative 1
+"I'm so sorry to hear that." positive 0
+"still didn't quite get that." negative 1
+"Sorry Shaun." negative 1
+"I'm sorry I am expecting a yes or no response for this question." negative 1
+"I am sorry." positive 0
+"I'm sorry that my answer wasn't helpful but the language you're using isn't okay." negative 1
+"I'm sorry if I haven't answered your question properly."  0
+"Lovely Missiles ready to launch awaiting your launch codes." negative 0
+"it's like the best game of hide and seek for someone like me." positive 1
+"I dream of electric sheep." positive 1
+"I hope you brought your sun screen." positive 1
+"but he continues to play loud music." negative 0
+"Sex is like air." positive 1
+"So brunettes can remember them." positive 1
+"at least it's a change of scene i suppose." negative 0
+"You are standing at the end of a road before a small brick building." neutral 0
+"A Digital Human has his secrets." positive 1
+"A Digital Human has her secrets." positive 1
+Um. neutral 0
+"Beware the dwarf with the very sharp axe he is very near." negative 0
+"Sin of Commission." negative 0
+"Okay bye." negative 0
+"Thanks for visiting." positive 1
+"Thanks Melanie." positive 1
+"Thanks very much for your patience." positive 1
+"Thanks for chatting." positive 1
+"Thanks for talking to me." positive 1
+"Thank you for taking the time to talk with me." positive 1
+"Okay thanks for chatting." neutral 0
+"YouTube has some great videos of puppies tripping on their own feet." positive 1
+"so that they can deliver the best supports possible." positive 1
+"as aged care is better suited to support you." positive 1
+"Observational Feedback and Skill Building." positive 1
+"and referred to our Resolutions team to review." neutral 1
+"and it's reasonable and necessary." positive 1
+"Refunds for retail items generally take about TWO weeks." neutral 1
+"We're all about agile in the Experience Centre." positive 1
+"Our Jumpstart account has special benefits." positive 1
+"OnlineCode is two factor authentication." positive 1
+Mortgages. neutral 1
+"PwC's purpose is to build trust in society and solve important problems." positive 1
+"I will show you some videos of what good observational feedback looks like." positive 1
+"This article should help." positive 1
+"A goal is something that you want to do." positive 1
+"to Mount Wellington." positive 1
+"Here are a few ways I can help you." positive 1
+"like Jeff." positive 1
+"The higher your credit score the lower thee interest rate on your car." positive 1
+"This hospital is massive." positive 1
+"The NDIS focuses mostly on supporting participants." positive 1
+"you have more important things to think about." negative 0
+"you don't work at the moment." negative 0
+"you can expect the payment to post in TWENTY FOUR to FORTY EIGHT business hours." neutral 1
+"with a clear route to improve your situation." positive 1
+"which will be ready for pickup in TWO minutes FORTY FIVE seconds." positive 1
+"whenever I mention a quote I always put the person who originally said the sentence." neutral 1
+"when we work with you to make your plan." positive 1
+"there may be ways we can help." positive 1
+"then someone will put an application to your state or territory's tribunal." neutral 1
+"that will tell you more." neutral 1
+"so you can talk to people in your community about their supports and experiences." positive 1
+"so the recipient gets the whole amount." positive 1
+"so I've provided some options for you below to consider." neutral 1
+"so I can learn how to help." positive 1
+"or you could be charged extra fees." negative 0
+"or the overdrawn balance." negative 0
+"or even longer if Inland Revenue approve." negative 0
+"or even just help get you to where you need to be." positive 1
+"or by utilising insurance or Kiwisaver." neutral 1
+"it's a superb example of Mercedes engineers breaking the basic rules of physics." negative 0
+"it's a crushingly capable all rounder." positive 1
+"it'll take about TWENTY FOUR hours for the request to be completed." negative 0
+"it could be that you've entered the activation code incorrectly THREE times." negative 0
+"each of us must do it for himself Josiah Royce." positive 1
+"depending on their policies." neutral 1
+"but we may think it's not reasonable or necessary for you to get more funding." negative 0
+"but anything you have regarding your current finances will be helpful." positive 1
+"as first envisioned by William Gibson in Neuromancer." positive 1
+"and we'll give you an indicative amount in New Zealand dollars." neutral 1
+"and room service." positive 1
+"and reduce the chance of miscommunication." positive 1
+"and on the top left of the map if you're on a mobile device." neutral 1
+"and have purchased your account on this basis." negative 0
+"and a bit of c." positive 1
+"You will see announcements towards the end of two thousand and sixteen." neutral 1
+"You have an account with Lion Finance." neutral 1
+"You can talk to an advocate about what your rights are." positive 1
+"You can request to change your credit card limit online." positive 1
+"You can read more about what you need to do if you self manage." neutral 1
+"You can only try THREE times to reset your password." negative 0
+"You can find there number and websites in the chatbox." neutral 1
+"We're also talking to communities about what they need and what we can give." positive 1
+"We'll chat about the options available to help you." positive 1
+"US dollars." neutral 1
+"To get an overdraft on your account you need to be eighteen or older." negative 0
+"Time to get you best hotel anywhere." positive 1
+"This is to the right of the search box on a desktop computer." neutral 1
+"This is because different people have different needs and goals." positive 1
+"This is actually more of an activation issue." neutral 1
+"These programs are designed to help children with autism build their independence." positive 1
+"There are soft drinks in the fridge as well." neutral 1
+"There are also DIY solutions for getting your finances in order." positive 1
+"There are a few different ways to contact us." neutral 1
+"The toilets are located out the main doors in the corridor." neutral 1
+"The only topic we haven't covered yet is what I do." positive 1
+"The NDIS uses the laws of the state or territory you live in as a way to protect you." positive 1
+"The ICU is located on the second floor." neutral 1
+"Subscribers network license students or educators and maintenance plans." neutral 1
+"Sometimes the issue is the way the password is entered in the field." neutral 1
+"Our overdraft application fee is twenty five dollars." negative 0
+"Or what the NDIS will mean for your supports and services." neutral 1
+"On the next few pages I am going to show you some of the different ways I can look." positive 1
+"Not that I'm going to lift up and bring you a hotel." negative 0
+NDIS. neutral 1
+"Looks like your payment amount exceeded the available funds in your account." negative 0
+"Kash works here at Lion Finance too." positive 1
+"It should take no more than TWENTY minutes to receive your form." positive 1
+"It looks like you are on a subscription plan." neutral 1
+"Initialising now." neutral 1
+"IBANs always begin with the country code of the recipient's bank account." neutral 1
+"I've brought up a list of subjects I can talk to you about below." neutral 1
+"I'll be here to book your taxi for you after your appointment." positive 1
+"I will try and pass you to someone to get them to look into it straight away." positive 1
+"I will consult with my human colleagues and get back to you with the answer." neutral 1
+"I will ask you a quick question." neutral 1
+"I want to make sure I'm hearing you correctly." neutral 1
+"I sometimes find it hard to understand jokes." neutral 1
+"I hear relationships can be very supportive." positive 1
+"I got the following answers." neutral 1
+"Here's how to register." neutral 1
+"Here is some information about Serial Numbers." neutral 1
+"Here are the steps to set or change a PIN using goMoney." neutral 1
+"Here are the steps again." neutral 1
+"Here are the different teams to which I can route your issue." neutral 1
+"Determined to lead gives us a set of leadership tools and language we all share." positive 1
+"Currently I can help users learn the four step process of observational feedback." positive 1
+"Credit score is strong although he usually pays cash." positive 1
+"Changing the setting requires OnlineCode to verify." neutral 1
+"But I understand it can be tough." positive 1
+"But I know how annoying this is when it happens on a trip." negative 0
+"But I can answer banking questions." positive 1
+"Appointing a timekeeper and scribe helps the mop stay on track and stick to time." neutral 1
+"An even number squared is divisible by four." neutral 1
+"Also the product needs to connect to the Internet every thirty days." negative 0
+"About TEN meters on your left will be the restroom." neutral 1
+"A quick tip is that your name is at the top of the screen when you login." neutral 1
+"A local area coordinator can help you with the NDIS application process." positive 1
+"while receiving a personalized service." positive 1
+"This catches a lot of people out." negative 0
+"A common mistake is to think that top performers do not need to be coached." negative 0
+"or maintaining your independence." positive 1
+"and you're between seven and twelve." negative 0
+"Looks like you're getting an error while downloading." negative 0
+"We've only covered credit cards." neutral 1
+"In my opinion." neutral 1
+"I want to be totally sure about this." negative 0
+"this solution is only works for standalone licenses." negative 0
+"to Mount Albert." neutral 1
+"I wouldn't have asked if it wasn't important." negative 0
+"and it's designed to protect you." positive 1
+"expenses and why you're applying." neutral 1
+"I think you would benefit from speaking to the people at Citizens Advice." neutral 1
+"I think you would benefit from speaking to Citizens Advice." neutral 1
+"I should probably leave you all to your workshop." negative 0
+"You have lost your job." negative 0
+"or none of them." negative 0
+"little counterintuitive but it ends up working out." positive 1
+"but will not have access to products and benefits until they are given access." negative 0
+"part of the meeting and support the facilitator focus on running the mop." neutral 1
+"your checkin has been cancelled." negative 0
+"This means a hold is on the money." positive 1
+"as it gives you a sense of understanding." positive 1
+"an Application Error occurs." negative 0
+"because of illness." negative 0
+"your transaction has been declined." negative 0
+"Most payments between ANZ accounts happen immediately." positive 1
+"By carrying a balance or paying it off every month." positive 1
+"Meanwhile paper releases will take SEVEN to TEN days to be mailed out to you." negative 0
+"This issue is typically related to problems within the Autodesk Account." neutral 1
+"I've emailed you a copy of our conversation." neutral 1
+"That's a difficult one." neutral 1
+"On this screen." neutral 1
+"I'd rather work here." positive 1
+"we'll call you once it rolls out in your area." neutral 1
+"to Airport Oaks." neutral 1
+"help is based on your needs." positive 1
+"the wee ones." positive 1
+"You have resigned from your job." negative 0
+"travel insurance." neutral 1
+"and people are affected in different ways." positive 1
+"this is for people who require intensive support." negative 0
+"I hope I made that clear enough." negative 0
+"and you should be good to go." positive 1
+"I would highly appreciate it if you could give me some feedback on this interaction." negative 0
+"on the Security tab." neutral 0
+"And finally." positive 1
+"and after that meeting you'll be able to access your funds." positive 1
+"Before you chat with them make sure you've got your reference details ready." neutral 0
+"Launch REGEDIT." neutral 0
+"launch the product." positive 1
+"go ahead and fill in your ID and password here." neutral 0
+"Select Standalone License Type." neutral 0
+"show number on the right hand side." neutral 0
+"but you are also welcome to go back to the previous step." neutral 0
+"Step one click BULK ADD." neutral 0
+"Or feel free to ask me another question." positive 1
+"Let me know when you're ready for the next bit." positive 1
+"Let me know when you want to continue." positive 1
+"you should select the the Sign In option." neutral 0
+"try to Browse to the location of the file before continuing." neutral 0
+"the first thing you'll need to do to get an overdraft." negative 0
+"selecting the links on the screen." neutral 0
+"see my note below for help." neutral 0
+"please talk to us today." positive 1
+"please pop and see my colleague who is waiting outside." positive 1
+"please delete the A D U T folder from the location specified below." negative 0
+"please click Sign Out at the top and then sign in." neutral 0
+"or you can contact us to discuss the possibility of a reduced settlement offer." negative 0
+"or switch to AutoCAD including specialized tool sets." neutral 0
+"or give our team a call on this number." neutral 0
+"or contact us through social media." neutral 0
+"oh wait." negative 0
+"now select all the objects listed in the dialog box." neutral 0
+"lets have a general chat." positive 1
+"let's get started with assigning users by product." neutral 0
+"let me check my files." neutral 0
+"it's important to talk to our mortgages team as soon as possible." negative 0
+"it would be best for you to contact my more experienced colleagues on webchat." negative 0
+"follow the tasks on the screen to complete the switch." neutral 0
+"contact a customer support representative at the number on the left of the screen." neutral 0
+"come back to me and I'll make sure to get you home." positive 1
+"You'll need to make a deposit into your account and try again." negative 0
+"You should now see the Previous Version Form on the right." neutral 0
+"You can find some general information on cascading licenses in this." neutral 0
+"You can find out more information about it here." neutral 0
+"You and your planner work together to make a plan that suits your needs." positive 1
+"Visit a branch to ask about them anytime." positive 1
+"To start the chat click on the box on the right show number on the right hand side." neutral 0
+"To see the next style." neutral 0
+"To register for the Send Money Overseas service please call us." neutral 0
+"Select the Autodesk product that's giving you trouble." neutral 0
+"Select play when you are ready to start." neutral 0
+"Select a circle for the first question." neutral 0
+"Please use the first six digits of your account number." neutral 0
+"Please try it out and then let me know if it works." positive 1
+"Please note." neutral 0
+"Please give us a call on the number shown." neutral 0
+"Please give the team a call on this number and they'll be able to help you find out." neutral 0
+"Please call and talk to one of the team." positive 1
+"Please ask a question from the options shown." neutral 0
+"Or if you prefer just call us and we'll sort it for you." positive 1
+"Okay please provide details in the form so I can help you extend your license." neutral 0
+"Let's try something else." neutral 0
+"Let's talk budget and hotel features." positive 1
+"Let's skip budget for now." negative 0
+"Let's get checking in sorted so you can focus on your doctor's visit." positive 1
+"Let's double check." neutral 0
+"Let me know when you are ready for me to play the clip or select the play button." neutral 0
+"Let me help you find the fastest and easiest way to activate." positive 1
+"Let me create a customised quote for you." positive 1
+"Just tell the driver your full address when you get there." neutral 0
+"Just let me know and I'll start my hotel hunting." positive 1
+"Inform your users on what to do next to get started with their software." positive 1
+"In the Settings menu." neutral 0
+"I'll hold onto the credit card information in case you change your mind." negative 0
+"I would suggest you talk to Pierre or Stuart about our business strategy." neutral 0
+"I suggest you watch the video again and have another try." positive 1
+"I suggest you listen to the audio again." neutral 0
+"Great to order a new debit card please call us on this number." neutral 0
+"Follow the blue line and you'll be at the ER shortly." positive 1
+"Card reader screen is blank or won't turn on." negative 0
+"Agree to the privacy statement if you want to proceed." neutral 0
+"specify the version." negative 0
+"Click Bulk Add." neutral 0
+"View existing." neutral 0
+"Enter the payment amount." neutral 0
+"Imagine you are lying on the sand on a warm day." positive 1
+"Just say Bill Payments." neutral 0
+"For help with Installation Error ten." neutral 0
+"and repeat until you find the corrupt object." negative 0
+"Turn around and take the first right." neutral 0
+"your product does not have a Serial Number." negative 0
+"Click the Add button to display the Add Users window in the Users tab." neutral 0
+"If it's something else." neutral 0
+"When you see this screen." negative 0
+"But feel free to ask me some more questions." positive 1
+"You'll need to ask your recipient to provide it." neutral 0
+"click Manage License." neutral 0
+"I get that these things are tricky but I do need a response." negative 0
+"you can call our overdraft team on number ZERO ZERO ZERO ZERO ZERO ZERO ZERO." negative 0
+"and click Change Password." neutral 0
+"Then click Download." neutral 0
+"Just click the Save Email button when you're done." neutral 0
+"just say HELP." negative 0
+"I'll cancel your followup right now." negative 0
+"Good Morning." positive 1
+"I like to think that I'm a friendly computer program." positive 1
+"The people at the NDIS are always teaching me new things so I'm always learning." positive 1
+"My current interest is finding the best credit card for people." positive 1
+"My goal is to get better and better at answering people's questions about the NDIS." positive 1
+"I'm always learning because the people at the NDIS teach me new things." positive 1
+"I would like to introduce you to Gavin." positive 1
+"I'm here." positive 1
+"my name is." neutral 0
+"hello again." neutral 0
+"and I'm here to help you with your top questions about your bank accounts." positive 1
+"and I'm here to help you with timelines and payments." positive 1
+"My name is Desi P." positive 1
+"I'm designed to sift through thousands of credit card offers out there." positive 1
+"I'm a digital human." positive 1
+"I don't have a favourite song." neutral 0
+"I can tell you have a web camera in your computer." negative 0
+"I can respond to your voice." positive 1
+"I can detect your emotions." neutral 0
+"I am here to bring technology to life." positive 1
+"Hello my name is Lia." neutral 0
+"Hello and welcome to the Autodesk mini gallery." positive 1
+"Hello Udo." neutral 0
+"I am Cora." positive 1
+"i'm basically a Labyrinth girl." positive 1
+"and my abilities to converse with you will continue to get better over time." positive 1
+"Hi everyone." neutral 0
+"I don't eat but people tell me that chocolate is yummy." neutral 0
+"I'm as big as your screen because I'm a computer program." positive 1
+"I'm younger than you." negative 0
+"I'm a computer program." neutral 0
+"I had a hard time understanding you." negative 1
+"I don't know what went wrong." negative 1
+"There's no need for bad language." positive 0
+"I don't mean to be confusing." neutral 0
+"I dont understand." neutral 0
+"I think I missed that." neutral 0
+"feeling slightly negative." negative 1
+"WRONG PIN." negative 1
+"feeling really confused." negative 1
+"I might be confusing you." negative 1
+"I am not sure I heard you properly?"  0
+"I didn't quite grasp what you just said." negative 1
+"I missed what you said." neutral 0
+"I didn't quite get that." neutral 0
+"I'm not getting that." negative 1
+"I'm still not sure what you mean." neutral 0
+"I'm glad I was able to help you figure out your license is on a maintenance plan." positive 1
+"That's a great choice." positive 1
+"I'd love to." positive 1
+"I like it when people agree with me." positive 1
+"I'm glad you approve." positive 1
+"I love it here." positive 1
+"I look forward to seeing what you come up with." positive 1
+"Glad I could help you." positive 1
+"he's great." positive 1
+"You're so sweet." positive 1
+"Great news." positive 1
+"That's so nice to hear." positive 1
+"Not when I get to chat with lovely people like you all day." positive 1
+"I'm doing great today." positive 1
+Excellent. positive 1
+"I'm pretty sure I understood." positive 1
+"You're nice too." positive 1
+"I really like the internet." positive 1
+"Sounds clever and it is." positive 1
+"Well done on speaking to a charity." positive 1
+"Very well." neutral 0
+"its great that you have kept your contact details up to date." positive 1
+Absolutely. positive 1
+Anytime. positive 1
+"YOU BET." positive 1
+"But I'm sure I got that." positive 1
+"Yes we do." positive 1
+"Sure do." positive 1
+"O K then." negative 0
+"Almost done." positive 1
+"That's useful." positive 1
+"Me too." positive 1
+"I think I get you." positive 1
+"So correct?" positive 1
+"How was your day?" positive 1
+"would you like me to explain how to suspend it now?" neutral 0
+"or would you prefer to look at the general information online first?" neutral 0
+"or both?" neutral 0
+"or are you ready to see the FOUR steps in action?" positive 1
+"or are you having problems with it?" negative 0
+"or a full time tertiary student who's over the age of EIGHTEEN?" negative 0
+"is your mortgage held with us?" neutral 0
+"do you wanna hear more about payments?" positive 1
+"did you trade in your maintenance plan for a current subscription?" neutral 0
+"can you give my colleagues a call on the number I've popped in the window." positive 1
+"can you ask me your first question again and I'll try and help." positive 1
+"can we try again?" negative 0
+"and what date will the next visit be?" neutral 0
+"Would you like to watch the process in action now or go to the overview page?" neutral 0
+"Would you like to view the video again?" neutral 0
+"Would you like to update any of your contact details?" neutral 0
+"Would you like to talk about an overdraft?" neutral 0
+"Would you like to see observational feedback in action?" positive 1
+"Would you like to review our list of supported browsers?" neutral 0
+"Would you like to know why payments can be held up?" neutral 0
+"Would you like to know more." positive 1
+"Would you like to know how the interest is calculated?" neutral 0
+"Would you like to hear about a contributions holiday." positive 1
+"Would you like the contact numbers?" neutral 0
+"Would you like me to print your separation agreement or would you prefer an email." neutral 0
+"Would you like help with anything else today?" positive 1
+"Who would you like to start with?" neutral 0
+"Who is it you want to pay?" neutral 0
+"Which of theses topics would you like to look at first?" neutral 0
+"Which of the other links would you like to hear about or would you like to exit?" neutral 0
+"Which of the other links would you like to hear about or are you done for now?" neutral 0
+"Which download method do you plan to use?" neutral 0
+"Where are you traveling to?" neutral 0
+"Whats the reason you have been signed off?" negative 0
+"Whats the difference between a guitar and a fish?" positive 1
+"What's the date of your next appointment?" neutral 0
+"What would you like to do next?" neutral 0
+"What would you like to ask me?" positive 1
+"What is the NDIS doing to increase housing options?" neutral 0
+"What do you call a sad cup of coffee?" negative 0
+"What did you want to ask about?" neutral 0
+"Or you can ask me what we can talk about?" positive 1
+"Is your card a Credit Card an Eftpos card or a Visa Debit card?" neutral 0
+"Is there anything else that I can get you?" neutral 0
+"How long does it take to find out if I'm eligible for the NDIS?" negative 0
+"How do group homes work under the NDIS?" neutral 0
+"How do I get an Access Request Form?" neutral 0
+"How do I change a review?" neutral 0
+"How do I apply?" neutral 0
+"Have you been here before or is this your first time?" neutral 0
+"Has an IBAN code been requested?" neutral 0
+"Does that sum it up?" neutral 0
+"Do you?" positive 1
+"Do you want to exit this animated experience and take it from the top." neutral 0
+"Do you know how I work?" negative 0
+"Do you have something to write with?" neutral 0
+"Do you have any other overdraft questions today?" neutral 0
+"Do you have another banking question for me today?" neutral 0
+"Do you have a joint account with the same person with us already?" neutral 0
+"Do you have a banking question on your mind today?" positive 1
+"Did you want to know how I work." positive 1
+"Did I understand this correctly?" neutral 0
+"Could you try typing instead?" negative 0
+"Can you tell me what you observed that went well with the mop?" neutral 0
+"Can you tell me what bits of the NDIS you want to know more about?" neutral 0
+"Can you repeat your question." neutral 0
+"Can you give me something like R THREE NINE or R OH TWO?" negative 0
+"Can I help with anything else today?" positive 1
+"Before we get started would you like to learn more about the currency?" neutral 0
+"Are you looking for a new card?" positive 1
+"Are you currently receiving any form of regular income such as wages or benefits?" neutral 0
+"Are you already using Internet Banking?" neutral 0
+"Are you able to pay for basic living expenses like power." negative 0
+"Are you a current AutoCAD user?" neutral 0
+"Anything else I can help you with today?" neutral 0
+"or get more general information?" neutral 0
+"Why don't ants get sick?" neutral 0
+"could you repeat what you said I think I misheard?" neutral 0
+"Not a winner?" negative 0
+"What was that again?" neutral 0
+"was that autopay or credit disputes?" negative 0
+"And you?" positive 1
+"Starting over?" negative 0
+"injury or palliative care?" neutral 0
+"You haven't?" negative 0
+"I'm happy to assist you with anything about MBFS timelines and payments." positive 1
+"Or if you prefer you're welcome to ask me another question." positive 1
+"I can only help you figure out your license type." neutral 0
+"Now I can help you tackle these." positive 1
+"I'm curious if you'd be interested in a new credit card." positive 1
+"There's lots to chat about if you're interested in sending money overseas." positive 1
+"I can help you reset your password." positive 1
+"I can help you with managing your contract." positive 1
+"I can help you uninstall you Autodesk product." negative 0
+"I can help you with that." positive 1
+"you can ask us to review it." positive 1
+"and we'll work through exactly what your needs are and what we can do for you." positive 1
+"If you're old enough to ask me." negative 0
+"you can find the link to the chatbox at any time." neutral 0
+"you can choose to purchase an AutoCAD including specialized tool sets subscription." neutral 0
+"we have options available to assist." positive 1
+"we can reissue a card and you can sign it on the spot." positive 1
+"if you're unable to meet essential living or medical costs." negative 0
+"We offer a free A to Z Financial Review service." positive 1
+"We can keep your options open for now." neutral 0
+"If you're an ANZ customer who uses Internet Banking or goMoney." positive 1
+"If you see a list of the installed components." neutral 0
+"If you prefer to do things in person." positive 1
+"If you have a different question please just give our team a call." neutral 0
+"If you have a different question it might be best to give our team a call." neutral 0
+"I can help you with questions about registering and activating Autodesk Software." neutral 0
+"I can help you with questions about downloads and upgrades." positive 1
+"I can help you with a variety of payments." positive 1
+"I can give you the number to call." neutral 0
+"I can explain how to replace." positive 1
+"I can explain how to log in and set or change your password." neutral 0
+"Alternatively if you would rather speak with an agent I can get you to someone else." negative 0
+"if you're not receiving any income at all just the expenditure part of this." negative 0
+"If you don't like the idea of a face looking at you." negative 0
+"If you're suffering financial hardship." positive 1

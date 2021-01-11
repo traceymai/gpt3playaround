@@ -1,0 +1,4 @@
+-1.0:->I'm so sorry this happened.. Things must have been really hard for you these past few days.
+0.0:->Just click the Save Email button when you're done.
+1.0:->Great to hear you're well!
+2.0:->They were all so sad but I was just laughing so hard.

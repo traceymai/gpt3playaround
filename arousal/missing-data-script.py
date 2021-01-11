@@ -60,6 +60,21 @@ def change_labels(num):
     elif num == -2:
         return "high deactivation"
 
+def map_emotions(gpt_out):
+    HA = ['surprised', 'amazement', 'ecstasy', 'excited', 'rage', 'shock', 'terror', 'alert']
+    MA = ['tense', 'alarmed', 'frustrated', 'happy', 'delighted', 'nervous', 'fear', 'envy']
+    MD = ['disgusted', 'depressed', 'sad', 'content', 'relaxed', 'satisfied', 'serene', 'empathetic']
+    HD = ['bored', 'tired', 'calm', 'sleepy', 'sorrow', 'grief']
+    if gpt_out in HA:
+        return "high activation"
+    elif gpt_out in MA:
+        return "medium activation"
+    elif gpt_out in MD:
+        return "medium deactivation"
+    elif gpt_out in HD:
+        return "high deactivation"
+    else:
+        return gpt_out
 def map_to_neutral(num):
     if num == 1:
         return "high activation"
@@ -77,10 +92,10 @@ def map_back(astr):
         return float(-2)
     elif astr == "medium deactivation":
         return float(-1)
-    elif astr == "low activation":
-        return float(-1)
+    #elif astr == "low activation":
+        #return float(-1)
     else:
-        return float("NaN")
+        return astr
 
 def transform_txt(inputf, trainingf): # n is the number of randomly chosen input instances wanted for each sentiment category
     """
@@ -113,7 +128,9 @@ def add_examples(gpt_instance, df_subset): # n is the number of Example instance
     
 # A function to write prompt into GPT-3 API:
 def write_prompts(all_data, gpt_instance):
+    ##all_data['gpt_output'] = all_data["Phrase_text"].apply(lambda x: gpt_instance.submit_request(x))
     all_data['gpt_output'] = all_data["Phrase_text"].apply(lambda x: gpt_instance.submit_request(x).choices[0].text.lower().strip())
+    all_data['gpt_output'] = all_data['gpt_output'].apply(lambda x: map_emotions(x))
     #all_data_used = all_data[all_data['gpt_output'] != "mixed"]
     #mixed_df = all_data[all_data['gpt_output'] == "mixed"]
     #all_data['matched'] = np.where(all_data['Arousal_class_label'] == all_data['gpt_output'], 1, 0)
@@ -131,8 +148,8 @@ def line_prepender(filename, line):
 
 def write_output(engine, temp, max_tokens, all_data, df_used):
     #def write_output(engine, temp, max_tokens, all_data, num_training_per_cate):
-    gpt = GPT(engine = engine, temperature = temp, max_tokens = max_tokens, output_prefix = "Sentiment:", logprobs = 3)
-    #gpt = add_examples(gpt, df_used)
+    gpt = GPT(engine = engine, temperature = temp, max_tokens = max_tokens, output_prefix = "Sentiment:", logprobs = 3, append_output_prefix_to_query=True)
+    gpt = add_examples(gpt, df_used)
     out_df = write_prompts(all_data, gpt)
     out_df = out_df[["Sentiment_class_label", "gpt_output", "Phrase_text"]]
     print(out_df)
@@ -141,11 +158,11 @@ def write_output(engine, temp, max_tokens, all_data, df_used):
     #out_df.drop("Arousal_class_label", axis = 1, inplace = True)
     #accuracy = ((np.sum(out_df['matched'])) / (out_df.shape[0])) * 100
     #print("Accuracy: {}".format(accuracy))
-    out_df.to_csv('outmissingdata_secondq.txt', header = False, index = None, sep = ",", mode = 'a')
+    out_df.to_csv('outmissingdata_descriptive_final1.txt', header = False, index = None, sep = ",", mode = 'a')
     #print("###" * 50)
     #print("Instances GPT-3 categorised as Mixed:")
     #mixed_df.to_csv("outzeroshot.txt", sep = " ", mode = "a")
-    line_prepender('outmissingdata_secondq.txt', "VALENCE,AROUSAL,SENTENCE")
+    line_prepender('outmissingdata_descriptive_final1.txt', "VALENCE,AROUSAL,SENTENCE")
 
 def main(inputf, trainingf, temp = None, max_tokens = 6):
     with open('GPT_SECRET_KEY.json') as f:
@@ -155,7 +172,7 @@ def main(inputf, trainingf, temp = None, max_tokens = 6):
     write_output(engine = "instruct-davinci-beta", temp = temp, max_tokens = max_tokens, all_data = all_data, df_used = df_used)
 
 if __name__ == "__main__":
-    inputf = "missing-data/data-without-gpt-output.txt"
+    inputf = "missing-data/data-without-gpt-output-descriptive.txt"
     trainingf = "arousal_train.txt"
     try:
         temp = float(input("Enter desired temperature setting (a floating point number from 0.0 to 1.0) (Hit \"Enter\" to set at 0.0): "))

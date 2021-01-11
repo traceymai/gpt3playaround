@@ -1,0 +1,47 @@
+VALENCE,AROUSAL,SENTENCE
+1.0,,unbiased
+1.0,neutral,umm neutral maybe a little happy
+1.0,neutral,neutral fine happy
+1.0,low activation,innocuous
+1.0,,diversified
+1.0,,balanced
+0.0,,whiteboard
+0.0,neutral,i'm a neutral sentence
+0.0,,describe
+0.0,neutral,This is a neutral sentence
+0.0,,I haven't tried that particular product.
+-1.0,,untested
+-1.0,,unsupported
+-1.0,-2.0,unresponsive
+-1.0,-2.0,unresolved
+-1.0,,unqualified
+-1.0,low activation,uninteresting
+-1.0,,unintelligible
+-1.0,low activation,unimportant
+-1.0,,unfamiliar
+-1.0,,undefined
+-1.0,,undecided
+-1.0,,unclear
+-1.0,-2.0,unavailable
+-1.0,-2.0,unable
+-1.0,low activation,nothing
+-1.0,-2.0,nonexistent
+-1.0,,no answer for that
+-1.0,irrelevant,irrelevant
+-1.0,-2.0,invalid
+-1.0,-1.0,intermittent
+-1.0,low activation,insufficient
+-1.0,-2.0,indifference
+-1.0,-2.0,incoherent
+-1.0,,inaudible
+-1.0,-2.0,inappropriate
+-1.0,low activation,inaccurate
+-1.0,-2.0,improper
+-1.0,,ill-defined
+-1.0,-2.0,ignore
+-1.0,-2.0,evasive
+-1.0,-2.0,erroneous
+-1.0,-2.0,defunct
+-1.0,-1.0,ambivalent
+-1.0,-2.0,abnormal
+-1.0,indifferent,Indifferent
