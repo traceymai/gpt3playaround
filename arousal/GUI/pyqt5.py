@@ -2,11 +2,12 @@ import PyQt5.QtWidgets as QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 import sys
-from PyQt5.QtCore import pyqtSlot
+import numpy as np
 import pandas as pd
+from PyQt5.QtCore import pyqtSlot
 
 class App(QMainWindow):
-	def __init__(self):
+	def __init__(self, text_file):
 		super(App, self).__init__()
 		self.title = "Label Comparison App"
 		self.left = 500
@@ -14,6 +15,13 @@ class App(QMainWindow):
 		self.width = 1200
 		self.height = 500
 		self.initUI()
+		self.text_file = text_file
+
+	def process_text_df(self):
+		text_file = self.text_file
+		text_df = pd.read_csv(text_file, sep = ",")
+
+
 
 
 	def initUI(self):
