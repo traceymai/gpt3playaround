@@ -1,0 +1,21 @@
+{
+  "valence_or_arousal": "valence",
+  "valence": {
+    "train_or_not": "train",
+    "train": {
+        "train_input_file": "training_data_fin.txt",
+        "train_sep": ":->"
+      },
+    "test_file": "sm_text_sentiment_training_new.txt"
+    },
+  "arousal": {
+    "train_or_not": "train",
+    "train": {
+      "train_input_file": "",
+      "train_sep": ""
+    },
+    "test_file": ""
+  },
+  "output_sep": ":;:",
+  "output_file": "out.txt"
+}
