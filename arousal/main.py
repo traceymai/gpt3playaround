@@ -17,8 +17,12 @@ def change_to_strings(sent_score):
 #     with open(configPath, encoding="utf8") as jsonDataFile:
 #         _data = json.load(jsonDataFile)
 #
+
+
 with open("sm_text_sentiment_training_new.txt", "r", encoding="utf8") as f:
-    allDataList = f.readlines()
+    allDataList = []
+    for i, line in enumerate(f):
+        allDataList.append(l)
     allDataList = [x.strip("\r\n") for x in allDataList]
     allDataList = [x.split(",", 1) for x in allDataList]
     labelList = [x[0] for x in allDataList]
@@ -35,6 +39,12 @@ with open("training_data_fin.txt", "r", encoding="utf8") as f:
     f.close()
 
 sentiment_prompt = "This is a tweet sentiment classifier\n"
+for ind in range(len(phraseTrainList)):
+    sentiment_prompt += "Tweet:" + phraseTrainList[ind] + "\n"
+    sentiment_prompt += "Sentiment: ", labelTrainList[ind] + "\n"
+    sentiment_prompt += "###\n"
+sentiment_prompt += "Tweet text\n"
+#for
 
 
 
