@@ -1,0 +1,77 @@
+,Valence,Arousal_x,Phrase_text,Arousal_y
+71,0.0,1.0,joke,
+226,-1.0,1.0,Well it would be a man telling a man with no shame how to dress ,
+629,-1.0,0.0,carolkerfoot U_M U_M I hate to say it but I heard rain too.,
+773,0.0,,He wanted to make a fake foul.he didn't know it was nacho,1.0
+774,0.0,,He wanted to make a fake foul.he didn't know it was nacho,1.0
+2227,1.0,0.0,good morning,1.0
+3302,1.0,1.0,These style skins remind me so much of hollow knight,
+3364,0.0,1.0,say it with me now super star,
+3407,1.0,1.0,play,
+3600,-1.0,,I don't think that's true. Every major story I remember from the [NAME] investigation has been from court documents.,1.0
+3601,-1.0,,I don't think that's true. Every major story I remember from the [NAME] investigation has been from court documents.,1.0
+3609,0.0,,what are you here for,1.0
+3610,0.0,,what are you here for,1.0
+3763,1.0,,go-go chicken and vegetable,1.0
+3764,1.0,,go-go chicken and vegetable,1.0
+4151,0.0,,naturally,1.0
+4152,0.0,,naturally,1.0
+4384,1.0,1.0,good,
+4543,0.0,1.0,Well it would be a man telling a man with no shame how to dress ,
+4618,0.0,1.0,surprised,
+4745,1.0,1.0,surprised,
+4850,-1.0,,what are you here for,1.0
+4851,-1.0,,what are you here for,1.0
+5104,-1.0,,Don't get excited yet ,
+5192,0.0,,go-go chicken and vegetable,1.0
+5193,0.0,,go-go chicken and vegetable,1.0
+5459,1.0,1.0,good,
+6010,1.0,,can you tell me another joke,1.0
+6011,1.0,,can you tell me another joke,1.0
+6780,1.0,,good morning,1.0
+6788,0.0,0.0,*Hey just noticed * it's your **2nd Cakeday** yosoyjackiejorpjomp! ^(hug),
+7205,0.0,-2.0,"Ultimately working for Google was incompatible with her role at the AI Now Institute, which she co-founded to examine the social implications of artificial intelligence.",
+7663,0.0,,cool,1.0
+7793,0.0,,can you tell me another joke,1.0
+7794,0.0,,can you tell me another joke,1.0
+7848,0.0,1.0,"Even better than, [NAME] pulls him off the bench.",
+8058,1.0,1.0,say it with me now super star,
+8082,0.0,1.0,"Not me personally, but I do think it's an excellent idea. You never know when a stomach bug might hit.",
+8270,-1.0,-2.0,"Ultimately working for Google was incompatible with her role at the AI Now Institute, which she co-founded to examine the social implications of artificial intelligence.",
+8333,-1.0,1.0, U_M heyy how are you? did you know the U_M profile was fake and it got shut down? I can't believe it wasnt real!,
+8452,-1.0,1.0,joke,
+8759,0.0,-2.0,Something something broken arms,
+8931,-1.0,-2.0,how are you sad,
+8943,0.0,1.0,Pretty much. Him and [NAME] will share ball handling duties. Point Lance and Point Outlaw in the house,
+9013,1.0,,can you tell me a joke,1.0
+9014,1.0,,can you tell me a joke,1.0
+9365,1.0,,integrated,1.0
+9636,0.0,1.0,These style skins remind me so much of hollow knight,
+9830,0.0,,can you tell me a joke,1.0
+9831,0.0,,can you tell me a joke,1.0
+9895,1.0,1.0,"Not me personally, but I do think it's an excellent idea. You never know when a stomach bug might hit.",
+10068,1.0,-2.0,please,1.0
+10098,0.0,,please,1.0
+10136,0.0,,Don't get excited yet ,
+10251,1.0,1.0,GG. We played as best as we could. Utah just a better team.,
+10261,1.0,,naturally,1.0
+10262,1.0,,naturally,1.0
+10747,-1.0,,He wanted to make a fake foul.he didn't know it was nacho,1.0
+10748,-1.0,,He wanted to make a fake foul.he didn't know it was nacho,1.0
+10777,0.0,-2.0,how are you sad,
+10830,1.0,1.0,"Even better than, [NAME] pulls him off the bench.",
+11009,-1.0,1.0, U_M heyy how are you? did you know the U_M profile was fake and it got shut down? I can't believe it wasnt real!,
+11658,1.0,1.0,cool,1.0
+11840,0.0,1.0,GG. We played as best as we could. Utah just a better team.,
+11862,1.0,0.0,*Hey just noticed * it's your **2nd Cakeday** yosoyjackiejorpjomp! ^(hug),
+12150,-1.0,-2.0,Something something broken arms,
+12366,0.0,1.0,play,
+12668,0.0,1.0,integrated,1.0
+12943,0.0,,I don't think that's true. Every major story I remember from the [NAME] investigation has been from court documents.,1.0
+12944,0.0,,I don't think that's true. Every major story I remember from the [NAME] investigation has been from court documents.,1.0
+13110,1.0,1.0,Pretty much. Him and [NAME] will share ball handling duties. Point Lance and Point Outlaw in the house,
+13254,-1.0,,People would still always parry them (600ms) :(,0.0
+13255,-1.0,,People would still always parry them (600ms) :(,0.0
+13614,-1.0,0.0,carolkerfoot U_M U_M I hate to say it but I heard rain too.,
+13742,0.0,,People would still always parry them (600ms) :(,0.0
+13743,0.0,,People would still always parry them (600ms) :(,0.0
