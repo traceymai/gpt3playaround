@@ -53,17 +53,28 @@ def prefill_prompt():
 sentiment_prompt = ""
 sentiment_prompt += prefill_prompt()[0]
 phraseList = prefill_prompt()[1]
-no_lines_in_batch = 100
+no_lines_in_batch = 50
 no_batches_needed = len(phraseList) // no_lines_in_batch
 start_ind = 1
 for batch in range(1, no_batches_needed + 1):
     # for each batch of no_lines_in_batch input lines passed through
-    if batch == 0:
+    if batch == 1 or batch == 2 or batch == 3:
         for ind in range(start_ind, start_ind + no_lines_in_batch):
-            sentiment_prompt += str(ind) + ". " + phraseList[ind] + "\n"
-    start_ind += no_lines_in_batch
-    print("BATCH {}".format(batch))
-    print(sentiment_prompt)
+            if ind % no_lines_in_batch == 0:
+                sentiment_prompt += str(no_lines_in_batch) + ". " + phraseList[ind] + "\n"
+            else:
+                sentiment_prompt += str(ind%no_lines_in_batch) + ". " + phraseList[ind] + "\n"
+        start_ind += no_lines_in_batch
+        sentiment_prompt += "Tweet sentiment ratings:\n"
+        sentiment_prompt += "1."
+        print("BATCH {}".format(batch))
+        print(sentiment_prompt)
+        sentiment_prompt = ""
+        sentiment_prompt += prefill_prompt()[0]
+
+    else:
+        break
+
 
 
 
