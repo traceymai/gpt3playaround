@@ -117,7 +117,6 @@ class MyFirstGUI:
         if len(content) > 0:
             test_index = int(content) - 1
             if 0 <= test_index < len(self.allText):
-                print("THIS IS TRUE HAHA")
                 self.index = test_index
                 self.submitbutton_label1['bg'] = 'white'
                 self.submitbutton_label2['bg'] = 'white'
@@ -290,7 +289,6 @@ class MyFirstGUI:
             self.submitbutton_label1['bg'] = 'white'
             self.button_show_entry['bg'] = 'white'
         matched = line.split(",")[-1].strip()
-        print("matched is", matched)
         for index, word in enumerate(self.list_line_eles):
             print((index, word))
             if index == 0: # This is a Phrase_text instance
@@ -312,9 +310,7 @@ class MyFirstGUI:
             elif index == 1: # This is the first label
                 self.Label1 = tk.Label(self.window, font=self.font, text=word)
                 self.Label1.grid(column=column, row=row, sticky="nsew", padx=10, pady=10)
-                print("self.correctLabel now is", self.correctLabel)
                 if self.correctLabel == self.Label1.cget("text"):
-                    print("yes")
                     self.submitbutton_label1['bg'] = "pink"
                     #self.change_col_again = False
                 if matched == "F":
@@ -335,7 +331,6 @@ class MyFirstGUI:
                 self.Label2 = tk.Label(self.window, font=self.font, text=word)
                 self.Label2.grid(column=column, row=row, sticky="nsew", padx=10, pady=10)
                 if self.correctLabel == self.Label2.cget("text") and self.submitbutton_label1['bg'] == "white":
-                    print("yes2")
                     self.submitbutton_label2['bg'] = 'pink'
                 print(row, column)
                 if matched == "F":
@@ -352,7 +347,6 @@ class MyFirstGUI:
                 column += 1
         # if self.submitbutton_label1['bg'] == 'white' and self.submitbutton_label2['bg'] == 'white' and phrase in self.correctLabels:
         if phrase in self.correctLabels and self.correctLabels[phrase] != self.list_line_eles[1] and self.correctLabels[phrase] != self.list_line_eles[2]:
-            print("THIS IS CORRECT")
             self.entryLabel = tk.Label(self.window, font=self.font, text=self.correctLabels[phrase])
             self.entryLabel.grid(row=2, column=5, padx=5, pady=5)
             self.button_show_entry['bg'] = 'pink'

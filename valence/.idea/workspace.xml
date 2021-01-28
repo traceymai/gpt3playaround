@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5f7102c4-910b-41c1-b1fc-bc8a598ef8ff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../arousal_selection_gui/.idea/arousal_selection_gui.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../arousal/gpt.py" beforeDir="false" afterPath="$PROJECT_DIR$/../arousal/gpt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../arousal/gpt3pipe.py" beforeDir="false" afterPath="$PROJECT_DIR$/../arousal/gpt3pipe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../arousal_selection_gui/conclusive_labels_final.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../arousal_selection_gui/conclusive_labels_final.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../arousal_selection_gui/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../arousal_selection_gui/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fb_data/convert_two_to_one_value.py" beforeDir="false" afterPath="$PROJECT_DIR$/../fb_data/convert_two_to_one_value.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/api/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/api/demo_web_app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/api/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/api/ui_config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/docs/getting-started.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/docs/priming.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/examples/run_analogies_app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/examples/run_blank_example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/examples/run_command_to_email_app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/examples/run_general_knowledge_q_and_a_app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/examples/run_latex_app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/examples/run_recipe_app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/src/serviceWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ignore/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../sm_text_sentiment_training_new.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../sm_text_sentiment_training_new.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1nfdkz1Ph0HY0FWeOHi77agQXA1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f7102c4-910b-41c1-b1fc-bc8a598ef8ff" name="Default Changelist" comment="" />
+      <created>1611785225404</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611785225404</updated>
+      <workItem from="1611785226511" duration="1562000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

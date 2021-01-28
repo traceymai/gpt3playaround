@@ -153,6 +153,7 @@ def main(num_testing_per_cate, num_training_per_cate = 0, temp = None, max_token
         
 if __name__ == "__main__":
     num_testing_per_cate = int(input("Enter number of randomly chosen testing instances per each sentiment category (an int): "))
+    num_testing_per_cate = int(input("Enter number of randomly chosen testing instances per each sentiment category (an int): "))
     # This is always 10
     num_training_per_cate = int(input("Enter number of randomly chosen training instances per each sentiment category (an int): "))
     # This is 1 or 0

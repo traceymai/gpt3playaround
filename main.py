@@ -72,6 +72,8 @@ def get_input_prams():
         _gptInfoDict = _data["gpt3_engine"]
         _promptDesignInfoDict = _data["prompt_design"]
         _trainModeDict = _data["train_mode"]
+        if _trainModeDict["train_or_zeroshot"] == "zeroshot":
+            _gptInfoDict["stop_sequence"] = "\n\n"
         # if _trainMode == "train":
         #     _trainModeDict = _data["train_mode"]["train"]
         # elif _trainMode == "zeroshot":
@@ -141,11 +143,11 @@ def submit_gpt_request(_gpt_instance, _train_mode_dict, _phrase_list, _sentiment
     _outputDir = _train_mode_dict["output_dir"]
     _numBatchesNeeded = (len(_phrase_list) // _numLinesInBatch) + 1
     _startIndex = 0
-    _outputFolder = Path(_outputDir + "output/")
+    _outputFolder = Path(_outputDir)
     _outputFolder.mkdir(parents=True, exist_ok=True)
     _outputFile = "output.txt"
     _filePath = _outputFolder / _outputFile
-    with _filePath.open("r+", encoding="utf8") as _f:
+    with _filePath.open("w+", encoding="utf8") as _f:
         _f.truncate(0)
         _f.close()
     for _batch in range(1, _numBatchesNeeded + 1):
@@ -162,13 +164,13 @@ def submit_gpt_request(_gpt_instance, _train_mode_dict, _phrase_list, _sentiment
         _sentiment_prompt += "1."
         print("BATCH {}".format(_batch))
         print(_sentiment_prompt)
-        _response = _gpt_instance.submit_request(prompt=_sentiment_prompt).choices[0].text
-        print("GPT response is", _response)
-        with _filePath.open("a", encoding="utf8") as _f:
-            _f.write(_response + "\n")
-            _f.close()
-        _sentimentPrompt = ""
-        _sentimentPrompt += prefill_prompt(_gpt_info_dict, _sentimentPrompt, _train_mode_dict, _prompt_design_info_dict, _classification_task)[0]
+        # _response = _gpt_instance.submit_request(prompt=_sentiment_prompt).choices[0].text
+        # print("GPT response is", _response)
+        # with _filePath.open("a", encoding="utf8") as _f:
+        #     _f.write(_response + "\n")
+        #     _f.close()
+        _sentiment_prompt = ""
+        _sentiment_prompt += prefill_prompt(_gpt_info_dict, _sentiment_prompt, _train_mode_dict, _prompt_design_info_dict, _classification_task)[0]
 
 
 if __name__ == "__main__":

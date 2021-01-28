@@ -52,6 +52,9 @@ class GPT:
                  input_suffix="\n",
                  output_prefix="Sentiment:",
                  output_suffix="\n\n",
+                 stop="\n",
+                 top_p = 0,
+                 n=1,
                  append_output_prefix_to_query=True):
         self.examples = {}
         self.engine = engine
@@ -62,7 +65,9 @@ class GPT:
         self.output_prefix = output_prefix
         self.output_suffix = output_suffix
         self.append_output_prefix_to_query = append_output_prefix_to_query
-        self.stop = "\n"
+        self.stop = stop
+        self.top_p = top_p
+        self.n = n
         self.logprobs = logprobs
         self.frequency_penalty = frequency_penalty
         self.presence_penalty = presence_penalty
@@ -120,17 +125,28 @@ class GPT:
 
     def submit_request(self, prompt):
         """Calls the OpenAI API with the specified parameters."""
+        # response = openai.Completion.create(engine=self.get_engine(),
+        #                                     prompt=self.craft_query(prompt),
+        #                                     max_tokens=self.get_max_tokens(),
+        #                                     temperature=self.get_temperature(),
+        #                                     top_p=0,
+        #                                     n=1,
+        #                                     stream=False,
+        #                                     stop=self.stop,
+        #                                     logprobs = self.logprobs,
+        #                                     frequency_penalty = self.frequency_penalty,
+        #                                     presence_penalty = self.presence_penalty)
         response = openai.Completion.create(engine=self.get_engine(),
-                                            prompt=self.craft_query(prompt),
+                                            prompt=prompt,
                                             max_tokens=self.get_max_tokens(),
                                             temperature=self.get_temperature(),
-                                            top_p=0,
-                                            n=1,
+                                            top_p=self.top_p,
+                                            n=self.n,
                                             stream=False,
                                             stop=self.stop,
-                                            logprobs = self.logprobs,
-                                            frequency_penalty = self.frequency_penalty,
-                                            presence_penalty = self.presence_penalty)
+                                            logprobs=self.logprobs,
+                                            frequency_penalty=self.frequency_penalty,
+                                            presence_penalty=self.presence_penalty)
         return response
         #return self.craft_query(prompt)
 

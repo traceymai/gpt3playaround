@@ -1,4 +1,3 @@
-Sentiment_class_label,Phrase_text
 1.0,zeal
 1.0,youthful
 1.0,youre awesome buddy!
