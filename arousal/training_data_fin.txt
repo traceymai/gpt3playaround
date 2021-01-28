@@ -1,5 +1,0 @@
-Sentiment_class_label:->Phrase_text
-1.0:-> BTW it does sound like you're generally doing brilliantly, all things considered.
-0.0:->take me on a technology tour
-0.0:->table tennis
--1.0:->Yes,on top of that feel like vomitting,can't breathe and thinking I will faint.
