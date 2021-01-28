@@ -6,6 +6,7 @@ import openai
 import sys
 from pathlib import Path
 
+
 def init_gpt(_gpt_info_dict):
     _engine = _gpt_info_dict["engine"]
     _temperature = _gpt_info_dict["temperature"]
@@ -17,22 +18,23 @@ def init_gpt(_gpt_info_dict):
     _stop = _gpt_info_dict["stop_sequence"]
     _frequency_penalty = _gpt_info_dict["frequency_penalty"]
     _presence_penalty = _gpt_info_dict["presence_penalty"]
-    _top_p=_gpt_info_dict["top_p"]
-    _n=_gpt_info_dict["n"]
+    _top_p = _gpt_info_dict["top_p"]
+    _n = _gpt_info_dict["n"]
     _logprobs = _gpt_info_dict["logprobs"]
     with open('arousal/GPT_SECRET_KEY.json') as f:
         data = json.load(f)
     openai.api_key = data["API_KEY"]
-    _gpt_instance = GPT(engine = _engine,
+    _gpt_instance = GPT(engine=_engine,
                         temperature=_temperature,
                         max_tokens=_max_tokens,
                         stop=_stop,
-                        top_p = _top_p,
-                        n = _n,
+                        top_p=_top_p,
+                        n=_n,
                         frequency_penalty=_frequency_penalty,
                         presence_penalty=_presence_penalty,
                         logprobs=_logprobs)
     return _gpt_instance
+
 
 def change_to_strings_sentiment(sent_score):
     if sent_score.strip() == "1.0":
@@ -43,6 +45,23 @@ def change_to_strings_sentiment(sent_score):
         return "Negative"
     else:
         raise ValueError("Training sentiment score needs to be 1.0 (Positive), 0.0 (Neutral) or -1.0 (Negative)")
+
+
+def change_to_strings_arousal(arousal_score):
+    if arousal_score.strip() == "1.0":
+        return "High Activation"
+    elif arousal_score.strip() == "0.0":
+        return "Medium Activation"
+    elif arousal_score.strip() == "-1.0":
+        return "Medium Deactivation"
+    elif arousal_score.strip() == "-2.0":
+        return "High Deactivation"
+    else:
+        raise ValueError(
+            "Training arousal score needs to be 1.0 (High Activation), 0.0 (Medium Activation), -1.0 (Medium Deactivation)" \
+            "or -2.0 (High Deactivation)")
+
+
 def get_input_prams():
     if len(sys.argv) > 1:
         _configPath = sys.argv[1]
@@ -61,8 +80,6 @@ def get_input_prams():
         _classificationTask = _data["classification_task"]
         _jsonDataFile.close()
         return _gptInfoDict, _trainModeDict, _promptDesignInfoDict, _classificationTask
-
-
 
 
 def prefill_prompt(_gpt_info_dict, _input_prompt, _train_mode_dict, _prompt_design_info_dict, _classification_task):
@@ -89,9 +106,12 @@ def prefill_prompt(_gpt_info_dict, _input_prompt, _train_mode_dict, _prompt_desi
         with open(_trainInputFile, "r", encoding="utf8") as _f:
             _trainDataList = _f.readlines()[1:]
             _trainDataList = [x.strip("\r\n") for x in _trainDataList]
-            _trainDataList = [x.split(":->",1) for x in _trainDataList]
+            _trainDataList = [x.split(":->", 1) for x in _trainDataList]
             _labelTrainList = [x[0] for x in _trainDataList]
-            _labelTrainList = [change_to_strings_sentiment(x) for x in _labelTrainList]
+            if _classification_task == "valence":
+                _labelTrainList = [change_to_strings_sentiment(x) for x in _labelTrainList]
+            elif _classification_task == "arousal":
+                _labelTrainList = [change_to_strings_arousal(x) for x in _labelTrainList]
             _phraseTrainList = [x[1].strip() for x in _trainDataList]
             for _ind in range(len(_phraseTrainList)):
                 _input_prompt += _inputPrefix + _phraseTrainList[_ind] + "\n"
@@ -100,77 +120,104 @@ def prefill_prompt(_gpt_info_dict, _input_prompt, _train_mode_dict, _prompt_desi
             _input_prompt += "Tweet text\n"
             for _ind in range(1, len(_phraseTrainList) + 1):
                 _input_prompt += str(_ind) + ". " + _phraseTrainList[_ind - 1] + "\n"
-            _input_prompt += "Tweet sentiment ratings:\n"
+            if _classification_task == "valence":
+                _input_prompt += "Tweet sentiment ratings:\n"
+            elif _classification_task == "arousal":
+                _input_prompt += "Tweet arousal ratings:\n"
             for _ind in range(1, len(_labelTrainList) + 1):
                 _input_prompt += str(_ind) + ": " + _labelTrainList[_ind - 1] + "\n"
             _input_prompt += "###\n"
-            _input_prompt += "Tweet text\n"
             _f.close()
     elif _train_mode == "zeroshot":
         _zeroshotDict = _train_mode_dict["zeroshot"]
         _zeroshotDescriptivePrompt = _zeroshotDict["descriptive_prompt"]
         _input_prompt += _zeroshotDescriptivePrompt + "\n"
+    _input_prompt += "Tweet text:\n"
     return _input_prompt, _phraseList
 
-def submit_gpt_request(_train_mode_dict, _phrase_list):
-    _numLinesInBatch = _train_mode_dict["num_lines_in_batch"]
+
+def submit_gpt_request(_gpt_instance, _train_mode_dict, _phrase_list, _sentiment_prompt, _classification_task, _gpt_info_dict, _prompt_design_info_dict):
+    _numLinesInBatch = _train_mode_dict["num_lines_per_batch"]
     _outputDir = _train_mode_dict["output_dir"]
     _numBatchesNeeded = (len(_phrase_list) // _numLinesInBatch) + 1
     _startIndex = 0
+    _outputFolder = Path(_outputDir + "output/")
+    _outputFolder.mkdir(parents=True, exist_ok=True)
+    _outputFile = "output.txt"
+    _filePath = _outputFolder / _outputFile
+    with _filePath.open("r+", encoding="utf8") as _f:
+        _f.truncate(0)
+        _f.close()
+    for _batch in range(1, _numBatchesNeeded + 1):
+        _endIndex = _startIndex + _numLinesInBatch
+        if _endIndex > len(_phrase_list):
+            _endIndex = len(_phrase_list)
+        for _ind in range(_startIndex, _endIndex):
+            _sentiment_prompt += str(_ind % _numLinesInBatch + 1) + ". " + _phrase_list[_ind] + "\n"
+        _startIndex += _numLinesInBatch
+        if _classification_task == "valence":
+            _sentiment_prompt += "Tweet sentiment ratings:\n"
+        elif _classification_task == "arousal":
+            _sentiment_prompt += "Tweet arousal ratings:\n"
+        _sentiment_prompt += "1."
+        print("BATCH {}".format(_batch))
+        print(_sentiment_prompt)
+        _response = _gpt_instance.submit_request(prompt=_sentiment_prompt).choices[0].text
+        print("GPT response is", _response)
+        with _filePath.open("a", encoding="utf8") as _f:
+            _f.write(_response + "\n")
+            _f.close()
+        _sentimentPrompt = ""
+        _sentimentPrompt += prefill_prompt(_gpt_info_dict, _sentimentPrompt, _train_mode_dict, _prompt_design_info_dict, _classification_task)[0]
 
 
 if __name__ == "__main__":
     gptInfoDict, trainModeDict, promptDesignInfoDict, classificationTask = get_input_prams()
     gptInstance = init_gpt(gptInfoDict)
     sentimentPrompt = ""
-    sentimentPrompt, phraseList = prefill_prompt(gptInfoDict, sentimentPrompt, trainModeDict, promptDesignInfoDict, classificationTask)
+    sentimentPrompt, phraseList = prefill_prompt(gptInfoDict, sentimentPrompt, trainModeDict, promptDesignInfoDict,
+                                                 classificationTask)
     no_lines_in_batch = 10
     no_batches_needed = (len(phraseList) // no_lines_in_batch) + 1
-    start_ind = 0
-    with open("valence/gpt_in_longer_prompt_valence.txt", "r+", encoding="utf8") as f:
-        f.truncate(0)
-        f.close()
-    for batch in range(1, no_batches_needed + 1):
-        # for each batch of no_lines_in_batch input lines passed through
-        if batch == 1 or batch == 2:
-            gpt_instance = init_gpt(no_lines_in_batch)
-            end_ind = start_ind + no_lines_in_batch
-            if end_ind > len(phraseList):
-                end_ind = len(phraseList)
-            for ind in range(start_ind, end_ind):
-                if ind % no_lines_in_batch == 0:
-                    sentimentPrompt += str(ind % no_lines_in_batch + 1) + ". " + phraseList[ind] + "\n"
-                    with open("valence/gpt_in_longer_prompt_valence.txt", "a", encoding="utf8") as f:
-                        f.write(str(ind + 1) + ". " + phraseList[ind] + "\n")
-                else:
-                    sentimentPrompt += str(ind % no_lines_in_batch + 1) + ". " + phraseList[ind] + "\n"
-                    with open("valence/gpt_in_longer_prompt_valence.txt", "a", encoding="utf8") as f:
-                        f.write(str(ind + 1) + ". " + phraseList[ind] + "\n")
-            start_ind += no_lines_in_batch
-            sentimentPrompt += "Tweet sentiment ratings:\n"
-            sentimentPrompt += "1."
-            print("BATCH {}".format(batch))
-            print(sentimentPrompt)
-            response = gpt_instance.submit_request(prompt=sentimentPrompt).choices[0].text
-            print("GPT response is", response)
-            if batch == 1:
-                with open("valence/gpt_out_longer_prompt_valence.txt", "w") as f:
-                    f.truncate(0)
-                    f.write(response + "\n")
-                    f.close()
-            else:
-                with open("valence/gpt_out_longer_prompt_valence.txt", "a") as f:
-                    f.write(response + "\n")
-                    f.close()
-            sentimentPrompt = ""
-            sentimentPrompt += prefill_prompt()[0]
-
-        else:
-            break
+    submit_gpt_request(gptInstance, trainModeDict, phraseList, sentimentPrompt, classificationTask, gptInfoDict, promptDesignInfoDict)
+    # with open("valence/gpt_in_longer_prompt_valence.txt", "r+", encoding="utf8") as f:
+    #     f.truncate(0)
+    #     f.close()
+    # for batch in range(1, no_batches_needed + 1):
+    #     # for each batch of no_lines_in_batch input lines passed through
+    #     if batch == 1 or batch == 2:
+    #         gpt_instance = init_gpt(no_lines_in_batch)
+    #         end_ind = start_ind + no_lines_in_batch
+    #         if end_ind > len(phraseList):
+    #             end_ind = len(phraseList)
+    #         for ind in range(start_ind, end_ind):
+    #             if ind % no_lines_in_batch == 0:
+    #                 sentimentPrompt += str(ind % no_lines_in_batch + 1) + ". " + phraseList[ind] + "\n"
+    #                 with open("valence/gpt_in_longer_prompt_valence.txt", "a", encoding="utf8") as f:
+    #                     f.write(str(ind + 1) + ". " + phraseList[ind] + "\n")
+    #             else:
+    #                 sentimentPrompt += str(ind % no_lines_in_batch + 1) + ". " + phraseList[ind] + "\n"
+    #                 with open("valence/gpt_in_longer_prompt_valence.txt", "a", encoding="utf8") as f:
+    #                     f.write(str(ind + 1) + ". " + phraseList[ind] + "\n")
+    #         start_ind += no_lines_in_batch
+    #         sentimentPrompt += "Tweet sentiment ratings:\n"
+    #         sentimentPrompt += "1."
+    #         print("BATCH {}".format(batch))
+    #         print(sentimentPrompt)
+    #         response = gpt_instance.submit_request(prompt=sentimentPrompt).choices[0].text
+    #         print("GPT response is", response)
+    #         if batch == 1:
+    #             with open("valence/gpt_out_longer_prompt_valence.txt", "w") as f:
+    #                 f.truncate(0)
+    #                 f.write(response + "\n")
+    #                 f.close()
+    #         else:
+    #             with open("valence/gpt_out_longer_prompt_valence.txt", "a") as f:
+    #                 f.write(response + "\n")
+    #                 f.close()
+    #         sentimentPrompt = ""
+    #         sentimentPrompt += prefill_prompt()[0]
+    #
+    #     else:
+    #         break
     print("FINISH")
-
-
-
-
-
-
