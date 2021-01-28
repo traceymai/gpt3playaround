@@ -20,10 +20,10 @@
   "train_mode": {
     "train_or_zeroshot": "zeroshot",
     "output_dir": "C:\\Users\\vta\\gpt3playaround\\gpt3playaround",
+    "num_lines_per_batch": 10,
     "input_file_to_label": "sm_text_sentiment_training_new.txt",
     "train": {
-      "train_input_file": "valence\\training_data_fin.txt",
-      "num_lines_per_batch": 10
+      "train_input_file": "valence\\training_data_fin.txt"
     },
     "zeroshot": {
       "descriptive_prompt": "Given a tweet, classify it into 3 sentiment categories: Positive, Neutral or Negative."
