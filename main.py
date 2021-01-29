@@ -7,15 +7,19 @@ import sys
 from pathlib import Path
 
 
-def init_gpt(_gpt_info_dict):
+def init_gpt(_gpt_info_dict, _prompt_design_info_dict):
     _engine = _gpt_info_dict["engine"]
     _temperature = _gpt_info_dict["temperature"]
     _max_tokens = _gpt_info_dict["max_tokens"]
+    _promptType = _prompt_design_info_dict["prompt_type"]
     # _input_prefix = _prompt_design_dict["input_prefix"]
     # _input_suffix = ""
     # _output_prefix = _prompt_design_dict["output_prefix"]
     # _output_suffix = ""
-    _stop = _gpt_info_dict["stop_sequence"]
+    if _promptType == "long":
+        _stop = _gpt_info_dict["stop_sequence"]
+    elif _promptType == "short":
+        _stop = "\n"
     _frequency_penalty = _gpt_info_dict["frequency_penalty"]
     _presence_penalty = _gpt_info_dict["presence_penalty"]
     _top_p = _gpt_info_dict["top_p"]
@@ -89,6 +93,7 @@ def prefill_prompt(_gpt_info_dict, _input_prompt, _train_mode_dict, _prompt_desi
     _input_file_to_label = _train_mode_dict["input_file_to_label"]
     _train_mode = _train_mode_dict["train_or_zeroshot"]
     _prompt = _prompt_design_info_dict["prompt"]
+    _promptType = _prompt_design_info_dict["prompt_type"]
     _inputPrefix = _prompt_design_info_dict["input_prefix"]
     _outputPrefix = _prompt_design_info_dict["output_prefix"]
     _input_prompt += _prompt + "\n"
@@ -104,17 +109,24 @@ def prefill_prompt(_gpt_info_dict, _input_prompt, _train_mode_dict, _prompt_desi
     if _train_mode == "train":
         _trainDict = _train_mode_dict["train"]
         _trainInputFile = _trainDict["train_input_file"]
-        _numLinesPerBatch = _trainDict["num_lines_per_batch"]
+        _numLinesPerBatch = _train_mode_dict["num_lines_per_batch"]
         with open(_trainInputFile, "r", encoding="utf8") as _f:
             _trainDataList = _f.readlines()[1:]
             _trainDataList = [x.strip("\r\n") for x in _trainDataList]
             _trainDataList = [x.split(":->", 1) for x in _trainDataList]
             _labelTrainList = [x[0] for x in _trainDataList]
-            if _classification_task == "valence":
-                _labelTrainList = [change_to_strings_sentiment(x) for x in _labelTrainList]
-            elif _classification_task == "arousal":
-                _labelTrainList = [change_to_strings_arousal(x) for x in _labelTrainList]
-            _phraseTrainList = [x[1].strip() for x in _trainDataList]
+            _f.close()
+        if _classification_task == "valence":
+            _labelTrainList = [change_to_strings_sentiment(x) for x in _labelTrainList]
+        elif _classification_task == "arousal":
+            _labelTrainList = [change_to_strings_arousal(x) for x in _labelTrainList]
+        _phraseTrainList = [x[1].strip() for x in _trainDataList]
+
+    elif _train_mode == "zeroshot":
+        _zeroshotDict = _train_mode_dict["zeroshot"]
+        _zeroshotDescriptivePrompt = _zeroshotDict["descriptive_prompt"]
+    if _promptType == "long":
+        if _train_mode == "train":
             for _ind in range(len(_phraseTrainList)):
                 _input_prompt += _inputPrefix + _phraseTrainList[_ind] + "\n"
                 _input_prompt += _outputPrefix + _labelTrainList[_ind] + "\n"
@@ -129,20 +141,26 @@ def prefill_prompt(_gpt_info_dict, _input_prompt, _train_mode_dict, _prompt_desi
             for _ind in range(1, len(_labelTrainList) + 1):
                 _input_prompt += str(_ind) + ": " + _labelTrainList[_ind - 1] + "\n"
             _input_prompt += "###\n"
-            _f.close()
-    elif _train_mode == "zeroshot":
-        _zeroshotDict = _train_mode_dict["zeroshot"]
-        _zeroshotDescriptivePrompt = _zeroshotDict["descriptive_prompt"]
-        _input_prompt += _zeroshotDescriptivePrompt + "\n"
-    _input_prompt += "Tweet text:\n"
-    return _input_prompt, _phraseList
+        elif _train_mode == "zeroshot":
+            _input_prompt += _zeroshotDescriptivePrompt + "\n"
+        _input_prompt += "Tweet text:\n"
+        return _input_prompt, _phraseList
+    elif _promptType == "short":
+        if _train_mode == "train":
+            for _ind in range(len(_phraseTrainList)):
+                _input_prompt += _inputPrefix + _phraseTrainList[_ind] + "\n"
+                _input_prompt += _outputPrefix + _labelTrainList[_ind] + "\n"
+        return _input_prompt, _phraseList
+
+    #     if _train_mode == "train":
+    #         _trainDict = _train_mode_dict["train"]
+    #         _trainInputFile = _trainDict["train_input_file"]
+    #         _numLinesPerBatch = _trainDict["num_lines_per_batch"]
+
 
 
 def submit_gpt_request(_gpt_instance, _train_mode_dict, _phrase_list, _sentiment_prompt, _classification_task, _gpt_info_dict, _prompt_design_info_dict):
-    _numLinesInBatch = _train_mode_dict["num_lines_per_batch"]
     _outputDir = _train_mode_dict["output_dir"]
-    _numBatchesNeeded = (len(_phrase_list) // _numLinesInBatch) + 1
-    _startIndex = 0
     _outputFolder = Path(_outputDir)
     _outputFolder.mkdir(parents=True, exist_ok=True)
     _outputFile = "output.txt"
@@ -150,37 +168,57 @@ def submit_gpt_request(_gpt_instance, _train_mode_dict, _phrase_list, _sentiment
     with _filePath.open("w+", encoding="utf8") as _f:
         _f.truncate(0)
         _f.close()
-    for _batch in range(1, _numBatchesNeeded + 1):
-        _endIndex = _startIndex + _numLinesInBatch
-        if _endIndex > len(_phrase_list):
-            _endIndex = len(_phrase_list)
-        for _ind in range(_startIndex, _endIndex):
-            _sentiment_prompt += str(_ind % _numLinesInBatch + 1) + ". " + _phrase_list[_ind] + "\n"
-        _startIndex += _numLinesInBatch
-        if _classification_task == "valence":
-            _sentiment_prompt += "Tweet sentiment ratings:\n"
-        elif _classification_task == "arousal":
-            _sentiment_prompt += "Tweet arousal ratings:\n"
-        _sentiment_prompt += "1."
-        print("BATCH {}".format(_batch))
-        print(_sentiment_prompt)
-        # _response = _gpt_instance.submit_request(prompt=_sentiment_prompt).choices[0].text
-        # print("GPT response is", _response)
-        # with _filePath.open("a", encoding="utf8") as _f:
-        #     _f.write(_response + "\n")
-        #     _f.close()
-        _sentiment_prompt = ""
-        _sentiment_prompt += prefill_prompt(_gpt_info_dict, _sentiment_prompt, _train_mode_dict, _prompt_design_info_dict, _classification_task)[0]
+    if _prompt_design_info_dict["prompt_type"] == "long":
+        _numLinesInBatch = _train_mode_dict["num_lines_per_batch"]
+        _numBatchesNeeded = (len(_phrase_list) // _numLinesInBatch) + 1
+        _startIndex = 0
+        for _batch in range(1, _numBatchesNeeded + 1):
+            _endIndex = _startIndex + _numLinesInBatch
+            if _endIndex > len(_phrase_list):
+                _endIndex = len(_phrase_list)
+            for _ind in range(_startIndex, _endIndex):
+                _sentiment_prompt += str(_ind % _numLinesInBatch + 1) + ". " + _phrase_list[_ind] + "\n"
+            _startIndex += _numLinesInBatch
+            if _classification_task == "valence":
+                _sentiment_prompt += "Tweet sentiment ratings:\n"
+            elif _classification_task == "arousal":
+                _sentiment_prompt += "Tweet arousal ratings:\n"
+            _sentiment_prompt += "1."
+            print("BATCH {}".format(_batch))
+            print(_sentiment_prompt)
+            _response = _gpt_instance.submit_request(prompt=_sentiment_prompt).choices[0].text
+            print("GPT response is", _response)
+            with _filePath.open("a", encoding="utf8") as _f:
+                _f.write(_response + "\n")
+                _f.close()
+            _sentiment_prompt = ""
+            _sentiment_prompt += prefill_prompt(_gpt_info_dict, _sentiment_prompt, _train_mode_dict, _prompt_design_info_dict, _classification_task)[0]
+    elif _prompt_design_info_dict["prompt_type"] == "short":
+        _inputPrefix = _prompt_design_info_dict["input_prefix"]
+        _outputPrefix = _prompt_design_info_dict["output_prefix"]
+        _stopSequence = "\n"
+        for index, phrase in enumerate(_phrase_list):
+            _sentiment_prompt += _inputPrefix + phrase + "\n"
+            _sentiment_prompt += _outputPrefix
+            _response = _gpt_instance.submit_request(prompt=_sentiment_prompt).choices[0].text.lower().strip()
+            print("GPT response is", _response)
+            with _filePath.open("a", encoding="utf8") as _f:
+                _f.write(str(index + 1) + ". " + phrase + ":->" + _response + "\n")
+                _f.close()
+            _sentiment_prompt = ""
+            _sentiment_prompt += prefill_prompt(_gpt_info_dict, _sentiment_prompt, _train_mode_dict, _prompt_design_info_dict,
+                           _classification_task)[0]
+
 
 
 if __name__ == "__main__":
     gptInfoDict, trainModeDict, promptDesignInfoDict, classificationTask = get_input_prams()
-    gptInstance = init_gpt(gptInfoDict)
+    gptInstance = init_gpt(gptInfoDict, promptDesignInfoDict)
     sentimentPrompt = ""
     sentimentPrompt, phraseList = prefill_prompt(gptInfoDict, sentimentPrompt, trainModeDict, promptDesignInfoDict,
                                                  classificationTask)
-    no_lines_in_batch = 10
-    no_batches_needed = (len(phraseList) // no_lines_in_batch) + 1
+    # no_lines_in_batch = 10
+    # no_batches_needed = (len(phraseList) // no_lines_in_batch) + 1
     submit_gpt_request(gptInstance, trainModeDict, phraseList, sentimentPrompt, classificationTask, gptInfoDict, promptDesignInfoDict)
     # with open("valence/gpt_in_longer_prompt_valence.txt", "r+", encoding="utf8") as f:
     #     f.truncate(0)
