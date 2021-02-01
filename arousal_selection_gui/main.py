@@ -123,7 +123,7 @@ class MyFirstGUI:
                     self.entryLabel.destroy()
                 self.get_a_line_unmatched()
 
-    def save_all_button(self):
+    def save_all_lines(self):
         print("About to save all lines to outfinal")
         if self.correctLabel != None:
             self.correctLabels[self.list_line_eles[0].strip()] = self.correctLabel

@@ -5,16 +5,25 @@ def process_textfile(filename):
     all_content = [line.strip('\r\n') for line in all_content]
     all_content = [x.rsplit(",", 3) for x in all_content]
     phrase_dict = {}
+    remove_dict = {}
     for idx in range(len(all_content)):
         line = all_content[idx]
         phrase = line[0]
         if phrase not in phrase_dict:
             phrase_dict[phrase] = (1, idx)
         else:
+            if phrase not in remove_dict:
+                remove_dict[phrase] = [idx]
+            elif phrase in remove_dict:
+                remove_dict[phrase].append(idx)
             phrase_dict[phrase] = ((phrase_dict[phrase][0] + 1), idx)
     print([(key, phrase_dict[key]) for key in phrase_dict if phrase_dict[key][0] > 1])
     print(len([(key, phrase_dict[key]) for key in phrase_dict if phrase_dict[key][0] > 1]))
-    idx_content_to_remove = [phrase_dict[key][1] for key in phrase_dict.keys() if phrase_dict[key][0] > 1]
+    #idx_content_to_remove = [phrase_dict[key][1] for key in phrase_dict.keys() if phrase_dict[key][0] > 1]
+    idx_content_to_remove = []
+    for val in remove_dict.values():
+        for ele in val:
+            idx_content_to_remove.append(ele)
     content_to_remove = [all_content[i][0] for i in idx_content_to_remove]
     with open("outfremove.txt", "w") as f:
         for line in content_to_remove:

@@ -3840,15 +3840,11 @@ can you teach me how to code ?, 1.0, 1.0, T
 Can you teach my kids ?, 1.0, 1.0, T
 can you tell if I'm happy or send, 1.0, 1.0, T
 can you tell me a joke, 1.0, 1.0, T
-can you tell me a joke, 1.0, 1.0, T
-can you tell me a joke, 1.0, 1.0, T
 can you tell me a little bit about what you do, 0.0, 0.0, T
 can you tell me about son's salesperson, 1.0, 1.0, T
 can you tell me about where soul machines are based, 1.0, 0.0, F
 can you tell me about your creation, 1.0, 1.0, T
 can you tell me about yourself please, 1.0, 0.0, F
-can you tell me another joke, 1.0, 1.0, T
-can you tell me another joke, 1.0, 1.0, T
 can you tell me another joke, 1.0, 1.0, T
 can you tell me more about sewing machines, 0.0, 0.0, T
 can you tell me more about technology, 0.0, 0.0, T
@@ -5344,8 +5340,6 @@ GO SUB TO HIM HES THE BEST, 1.0, 1.0, T
 go to 3, 1.0, 1.0, T
 go to hell, 1.0, 1.0, T
 go-go chicken and vegetable, 1.0, 1.0, T
-go-go chicken and vegetable, 1.0, 1.0, T
-go-go chicken and vegetable, 1.0, 1.0, T
 goa URL , 1.0, , F
 goad, 1.0, 1.0, T
 god damn that's unreal., 1.0, 1.0, T
@@ -5829,8 +5823,6 @@ He still has less health than [NAME] despite being slower and bigger and literal
 he stop his tantrums &amp; went to sleep like me., 1.0, 1.0, T
 He takes so much abuse and i appreciate it's him and not butcher or severson tight now., 1.0, 1.0, T
 He took it too far, 1.0, -2.0, F
-He wanted to make a fake foul.he didn't know it was nacho, 1.0, 1.0, T
-He wanted to make a fake foul.he didn't know it was nacho, 1.0, 1.0, T
 He wanted to make a fake foul.he didn't know it was nacho, 1.0, 1.0, T
 he wanted to piss off his neighbor next door that yells at people fir walking in his grass., 1.0, 1.0, T
 he wants to discuss with them, 1.0, 1.0, T
@@ -6383,8 +6375,6 @@ I don't think I've seen that movie before., 0.0, 0.0, T
 I don't think it's duping I think it probably loot cycling you can find almost the military gear from on the coast now., 1.0, 1.0, T
 I don't think my town has a market., 0.0, -1.0, F
 I don't think that bagel is agreeing with me, 1.0, -1.0, F
-I don't think that's true. Every major story I remember from the [NAME] investigation has been from court documents., 1.0, 1.0, T
-I don't think that's true. Every major story I remember from the [NAME] investigation has been from court documents., 1.0, 1.0, T
 I don't think that's true. Every major story I remember from the [NAME] investigation has been from court documents., 1.0, 1.0, T
 I don't think this happened at all tbh, 1.0, 1.0, T
 i don't understand anything you say, -2.0, -2.0, T
@@ -9507,8 +9497,6 @@ Narrow-minded, 1.0, -2.0, F
 nasty, 1.0, 1.0, T
 National MP Nikki Kaye horrified after pet cat's disturbing accident, 0.0, 1.0, F
 naturally, 1.0, 1.0, T
-naturally, 1.0, 1.0, T
-naturally, 1.0, 1.0, T
 nauseating, -2.0, -2.0, T
 nauseous, 1.0, -2.0, F
 navigable, 1.0, 0.0, F
@@ -10164,8 +10152,6 @@ people are hypeing it too much, 1.0, -1.0, F
 People in the UK are more aware than ever of the impact of the climate crisis – and are planning to reduce their own carbon footprints in 2020., 0.0, 1.0, F
 people judging other people are heck of a sh*t! they aren't perfect anyways!!, 1.0, 1.0, T
 People who are browsing the internet anyway: Find me a wallet that has a coin bit and looks awesome. Etsy not really helping me out here, 1.0, 0.0, F
-People would still always parry them (600ms) :(, 0.0, 0.0, T
-People would still always parry them (600ms) :(, 0.0, 0.0, T
 People would still always parry them (600ms) :(, 0.0, 0.0, T
 perfect for the sun shining through the trees good morning world ? URL , 1.0, 1.0, T
 perfect, 1.0, 1.0, T
@@ -13604,8 +13590,6 @@ what are the Unseen seen, 1.0, 1.0, T
 what are you doing DATE, 1.0, 1.0, T
 what are you doing PERSON_NAME, 1.0, 1.0, T
 what are you even talking about, 1.0, 1.0, T
-what are you here for, 1.0, 1.0, T
-what are you here for, 1.0, 1.0, T
 what are you here for, 1.0, 1.0, T
 what are you looking at. you should look at me, 1.0, 1.0, T
 What are you rambling on about, 1.0, 1.0, T
