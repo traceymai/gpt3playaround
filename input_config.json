@@ -14,11 +14,11 @@
   },
 
   "title": "classification_task",
-  "classification_task": "valence",
+  "classification_task": "arousal",
 
   "title": "train_mode",
   "train_mode": {
-    "train_or_zeroshot": "train",
+    "train_or_zeroshot": "zeroshot",
     "output_dir": "C:\\Users\\vta\\gpt3playaround\\gpt3playaround",
     "num_lines_per_batch": 5,
     "input_file_to_label": "sm_text_sentiment_training_new.txt",

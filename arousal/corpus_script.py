@@ -142,7 +142,7 @@ def write_output(engine, temp, max_tokens, all_data, df_used):
     #print("###" * 50)
     #print("Instances GPT-3 categorised as Mixed:")
     #mixed_df.to_csv("outzeroshot.txt", sep = " ", mode = "a")
-    line_prepender('outfinal.txt', "VALENCE,AROUSAL,SENTENCE")
+    line_prepender('merged_data/outfinal.txt', "VALENCE,AROUSAL,SENTENCE")
 
 def main(inputf, trainingf, temp = None, max_tokens = 6):
     with open('GPT_SECRET_KEY.json') as f:

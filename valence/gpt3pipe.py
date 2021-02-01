@@ -1,4 +1,4 @@
-import subprocess
+\import subprocess
 import sys 
 import json
 import openai
@@ -17,7 +17,7 @@ from string import whitespace
     # Laugh     :D, : D, : -D, xD, X - Dz, x - D, XD
     df.replace(r"(:\s?-?\s?d|x\s?-\s?dz|x\s?-\s?d)", emoPos, regex = True, inplace = True)
     # Love     <3, < 3, :*
-    df.replace(r"(<3|:\*)", emoPos, regex = True, inplace = True)
+    df.replace(r"(<3|:\*)", emoPos, regex = //  True, inplace = True)
     # Wink    ; -), ;), ; -D, ; D, (; , (-;
     df.replace(r"(;-?\)|;-?D|\(-?;)", emoPos, regex = True, inplace = True)
     # Sad     :-(, : (, :(, ) : , ) - :
@@ -133,7 +133,7 @@ def write_output(engine, temp, max_tokens, all_data, num_training_per_cate):
     print("###" * 50)
     print("Instances GPT-3 categorised as Mixed:")
     mixed_df.to_csv("outzeroshot.txt", sep = " ", mode = "a")
-    line_prepender('outzeroshot.txt', "ACCURACY: {:.2f}, TEMPERATURE: {}".format(accuracy, temp))
+    line_prepender('../arousal/output/outzeroshot.txt', "ACCURACY: {:.2f}, TEMPERATURE: {}".format(accuracy, temp))
 
 
 
@@ -141,7 +141,7 @@ def main(num_testing_per_cate, num_training_per_cate = 0, temp = None, max_token
     with open('GPT_SECRET_KEY.json') as f:
         data = json.load(f)
     openai.api_key = data["API_KEY"]
-    filename = "train_test_gpt3.txt"
+    filename = "train_data/train_test_gpt3.txt"
     all_data = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
     #all_data, df_used = transform_txt(filename = filename, num_training_per_cate = num_training_per_cate)
     # if training data is used (n indicating number of training instances per category of sentiment)

@@ -1,5 +1,5 @@
+
 def process_textfile(filename):
-    filename="outmergedmissing.txt"
     infile = open(filename, "r", encoding="utf8")
     all_content = sorted(infile.readlines(), key=str.casefold)
     all_content = [line.strip('\r\n') for line in all_content]

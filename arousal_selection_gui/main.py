@@ -4,14 +4,15 @@ import tkinter.messagebox as tkmessagebox
 import tkinter.font as tkfont
 from process_textfile import process_textfile
 import math
+
+## TODO: Get rid of all unused code
+
+
 class MyFirstGUI:
     fileName = "outmergedmissing.txt"
     fileName, contentToRemove = process_textfile(fileName)
     outFile = "conclusive_labels_linebyline.txt"
     outFinal = "conclusive_labels_final.txt"
-    #keyword_sign = '*'
-    #keyword_color = 'yellow'
-    #normal_color = 'white'
     line_button_number = 15
     index = 0
     allText = None
@@ -35,19 +36,21 @@ class MyFirstGUI:
         window.protocol("WM_DELETE_WINDOW", lambda arg=window: self.messageWindow())
         self.get_all_text()
         self.get_correct_labels_existing()
-        # self.get_added_to_linebyline()
         self.set_up_labels()
         self.get_a_line_unmatched()
 
     def ask_quit(self):
-        # if tkmessagebox.askokcancel("Quit and Save All", "You want to quit and save all?"):
-        #     self.save_all_lines()
-        #     self.window.destroy()
         self.save_all_lines()
         self.window.destroy()
+
+
     def only_quit(self):
         self.window.destroy()
+
+
     def messageWindow(self):
+        #TODO: Resize window, options: Quit, Quit & Save, make message smaller
+
         win = Toplevel()
         win.title("About to Quit...")
         message = "Did you wish to quit and save all?"
@@ -58,6 +61,7 @@ class MyFirstGUI:
 
 
     def get_correct_labels_existing(self):
+        #TODO: Refactor code to be consistent in coding style
         self.correctLabels = {}
         with open(self.outFinal) as outFinal:
             existing_content = outFinal.readlines()
@@ -68,17 +72,11 @@ class MyFirstGUI:
             for line in existing_content:
                 line = line.rsplit(",", 1)
                 line = [word.strip() for word in line]
-                sent = line[0]
-                self.correctLabels[sent] = line[-1]
+                sentence = line[0]
+                self.correctLabels[sentence] = line[-1]
         print("correctLabels after appending existing info:")
         print(self.correctLabels)
         outFinal.close()
-
-    def select_button(self, widget):
-        if widget['bg'] == self.normal_color:
-            widget['bg'] = self.keyword_color
-        else:
-            widget['bg'] = self.normal_color
 
     def go_previous(self):
         print("Going previous")
@@ -125,24 +123,7 @@ class MyFirstGUI:
                     self.entryLabel.destroy()
                 self.get_a_line_unmatched()
 
-    # def save_a_line(self):
-        # line = self.allText[self.index]
-        # phrase_text = line.rsplit(",", 3)[0]
-        # conclusive_label = self.correctLabels[self.index]
-        # line_ele = [phrase_text, conclusive_label]
-        # line = ' '.join(line_ele)
-        # #self.allText[self.index] = line
-        # fileOut = open(self.outFile,'a')
-        # self.added_to_linebyline[self.index] = True
-        # #or line in self.allText:
-        # fileOut.write(line+'\n')
-        # fileOut.close()
-
-
-
-    # def get_added_to_linebyline(self):
-    #     self.added_to_linebyline = {index: False for index in range(len(self.allText))}
-    def save_all_lines(self):
+    def save_all_button(self):
         print("About to save all lines to outfinal")
         if self.correctLabel != None:
             self.correctLabels[self.list_line_eles[0].strip()] = self.correctLabel
@@ -151,9 +132,6 @@ class MyFirstGUI:
         outf.truncate(0)
         if len(self.correctLabels) >= 1:
             for sent in self.correctLabels:
-                #line = self.allText[self.index]
-                #phrase_text = line.rsplit(",", 3)[0]
-                #print(phrase_text)
                 conclusive_label = self.correctLabels[sent]
                 line_ele = [sent, conclusive_label]
                 line = ', '.join(line_ele)
@@ -161,42 +139,8 @@ class MyFirstGUI:
                 fileOutFinal.write(line + "\n")
             fileOutFinal.close()
 
-
-
-
-    # def save_entry_input(self, entry):
-    #     #print(self.index)
-    #     #print(entry.get())
-    #     try:
-    #         flag = float(entry.get()) in [1.0, 0.0, -1.0]
-    #     except ValueError:
-    #         print("Please input 1.0, 0.0 or -1.0")
-    #     else:
-    #         if flag == True:
-    #             try:
-    #                 current_label = self.correctLabels[self.index]
-    #             except KeyError:
-    #                 self.correctLabels[self.index] = entry.get()
-    #             else:
-    #                 self.correctLabels[self.index] = entry.get()
-    #         elif flag == False:
-    #             print("Error: Please input 1.0, 0.0 or -1,0")
-    #     print(self.correctLabels)
-
-    # def submit_clicked(self, submitbutton, newLabel):
-    #     print(self.index)
-    #     # try:
-    #     #     current_label = self.correctLabels[self.index]
-    #     #     #self.correctLabels[self.index] = newLabel
-    #     # except KeyError:
-    #     self.correctLabels[self.index] = newLabel
-    #     # else:
-    #     #     self.correctLabels[self.index] = newLabel
-    #     #if self.correctLabels[self.index]
-    #     #self.correctLabels.append(newLabel)
-    #     print(self.correctLabels)
-        #submitbutton.configure(state="disabled")
-    def clicked_1(self):
+    #TODO: Rename these functions below
+    def arousal1_submit_button(self):
         self.submitbutton_label1['bg'] = "pink"
         if self.submitbutton_label2['bg'] == "pink" or self.button_show_entry['bg'] == "pink":
             self.submitbutton_label2['bg'] = "white"
@@ -324,7 +268,7 @@ class MyFirstGUI:
                 self.displays.append(self.Label1)
                 # self.submitbutton_label1 = tk.Button(self.window, text="Submit", padx=10,pady=10, font=self.font)
                 # self.submitbutton_label1.grid(row=row+1, column=column, padx=10, pady=10, sticky="nsew")
-                self.submitbutton_label1.config(command=self.clicked_1)
+                self.submitbutton_label1.config(command=self.arousal1_submit_button)
                 #print(self.correctLabels)
                 column += 1
             elif index == 2: # This is the second label

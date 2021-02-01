@@ -145,7 +145,7 @@ def write_output(engine, temp, max_tokens, all_data, df_used):
     print("###" * 50)
     #print("Instances GPT-3 categorised as Mixed:")
     #mixed_df.to_csv("outzeroshot.txt", sep = " ", mode = "a")
-    line_prepender('out_descriptive_prompt_zeroshot_emotions_mapped.txt', "ACCURACY: {:.2f}, TEMPERATURE: {}".format(accuracy, temp))
+    line_prepender('output/out_descriptive_prompt_zeroshot_emotions_mapped.txt', "ACCURACY: {:.2f}, TEMPERATURE: {}".format(accuracy, temp))
 
 def main(inputf, trainingf, temp = None, max_tokens = 6):
     with open('GPT_SECRET_KEY.json') as f:

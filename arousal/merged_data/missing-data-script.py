@@ -165,7 +165,7 @@ def write_output(engine, temp, max_tokens, all_data, df_used):
     line_prepender('outmissingdata_descriptive_final1.txt', "VALENCE,AROUSAL,SENTENCE")
 
 def main(inputf, trainingf, temp = None, max_tokens = 6):
-    with open('GPT_SECRET_KEY.json') as f:
+    with open('../GPT_SECRET_KEY.json') as f:
         data = json.load(f)
     openai.api_key = data["API_KEY"]
     all_data, df_used = transform_txt(inputf = inputf, trainingf = trainingf)
