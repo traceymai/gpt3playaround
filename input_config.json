@@ -12,30 +12,57 @@
   "n": 1,
   "logprobs": 3
   },
+  "notes": "Specify all relevant parameters as shown on OpenAI's playground here",
 
   "title": "classification_task",
+<<<<<<< Updated upstream
   "classification_task": "sentiment",
+||||||| constructed merge base
+  "classification_task": "arousal",
+=======
+  "classification_task": "arousal",
+  "notes": "This will be either sentiment or arousal",
+>>>>>>> Stashed changes
 
   "title": "train_mode",
   "train_mode": {
     "train_or_zeroshot": "zeroshot",
+<<<<<<< Updated upstream
     "output_dir": "C:\\Users\\tracey.mai\\PycharmProjects\\gpt3playaround",
     "output_filename": "output1.txt",
     "num_lines_per_batch": 1,
+||||||| constructed merge base
+    "output_dir": "C:\\Users\\vta\\gpt3playaround\\gpt3playaround",
+    "num_lines_per_batch": 5,
+=======
+    "notes": "If 'train', it is advised to choose engine 'davinci-instruct-beta', in 'prompt_design' provide 'prompt' as first line of prompt, put 'prompt_type' as 'long', in 'zeroshot' provide 'descriptive_prompt' to further give the engine instruction on task and categories",
+    "notes": "If 'zeroshot', advised to choose engine davinci or 'cushman-alpha' (if available at time of use), in 'prompt_design' provide 'short' under 'prompt_type', provide 'descriptive_prompt' in 'zeroshot'",
+
+    "output_dir": "C:\\Users\\vta\\gpt3playaround\\gpt3playaround",
+    "num_lines_per_batch": 5,
+>>>>>>> Stashed changes
     "input_file_to_label": "sm_text_sentiment_training_new.txt",
     "train": {
-      "train_input_file": "valence\\training_data_fin.txt"
+      "train_input_file": "valence\\train_data\\training_data_fin.txt"
     },
     "zeroshot": {
-      "descriptive_prompt": "Given a tweet, classify it into 3 sentiment categories: Positive, Neutral or Negative."
+      "descriptive_prompt": "Given a tweet, classify it into 4 arousal categories: High Activation, Medium Activation, Medium Deactivation or High Deactivation."
     }
   },
 
   "title": "prompt_design",
   "prompt_design":{
+<<<<<<< Updated upstream
     "prompt": "This is a tweet sentiment classifier.",
     "prompt_type": "short",
+||||||| constructed merge base
+    "prompt": "This is a tweet sentiment classifier.",
+    "prompt_type": "long",
+=======
+    "prompt": "Given a tweet, classify it into 4 arousal categories: High Activation, Medium Activation, Medium Deactivation or High Deactivation.",
+    "prompt_type": "short",
+>>>>>>> Stashed changes
     "input_prefix": "Tweet: ",
-    "output_prefix": "Sentiment:"
+    "output_prefix": "Output:"
   }
 }
