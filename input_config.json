@@ -2,7 +2,7 @@
   "title": "gpt3_engine_settings",
 
   "gpt3_engine": {
-  "engine": "davinci-instruct-beta",
+  "engine": "cushman-alpha",
   "temperature": 0,
   "max_tokens": 100,
   "stop_sequence": "###",
@@ -14,13 +14,14 @@
   },
 
   "title": "classification_task",
-  "classification_task": "arousal",
+  "classification_task": "sentiment",
 
   "title": "train_mode",
   "train_mode": {
     "train_or_zeroshot": "zeroshot",
-    "output_dir": "C:\\Users\\vta\\gpt3playaround\\gpt3playaround",
-    "num_lines_per_batch": 5,
+    "output_dir": "C:\\Users\\tracey.mai\\PycharmProjects\\gpt3playaround",
+    "output_filename": "output1.txt",
+    "num_lines_per_batch": 1,
     "input_file_to_label": "sm_text_sentiment_training_new.txt",
     "train": {
       "train_input_file": "valence\\training_data_fin.txt"
@@ -33,7 +34,7 @@
   "title": "prompt_design",
   "prompt_design":{
     "prompt": "This is a tweet sentiment classifier.",
-    "prompt_type": "long",
+    "prompt_type": "short",
     "input_prefix": "Tweet: ",
     "output_prefix": "Sentiment:"
   }

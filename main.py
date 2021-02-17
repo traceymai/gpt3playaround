@@ -161,9 +161,9 @@ def prefill_prompt(_gpt_info_dict, _input_prompt, _train_mode_dict, _prompt_desi
 
 def submit_gpt_request(_gpt_instance, _train_mode_dict, _phrase_list, _sentiment_prompt, _classification_task, _gpt_info_dict, _prompt_design_info_dict):
     _outputDir = _train_mode_dict["output_dir"]
+    _outputFile = _train_mode_dict["output_filename"]
     _outputFolder = Path(_outputDir)
     _outputFolder.mkdir(parents=True, exist_ok=True)
-    _outputFile = "output.txt"
     _filePath = _outputFolder / _outputFile
     with _filePath.open("w+", encoding="utf8") as _f:
         _f.truncate(0)
