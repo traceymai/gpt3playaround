@@ -200,6 +200,8 @@ def submit_gpt_request(_gpt_instance, _train_mode_dict, _phrase_list, _sentiment
         for index, phrase in enumerate(_phrase_list):
             _sentiment_prompt += _inputPrefix + phrase + "\n"
             _sentiment_prompt += _outputPrefix
+            print("prompt is")
+            print(_sentiment_prompt)
             _response = _gpt_instance.submit_request(prompt=_sentiment_prompt).choices[0].text.lower().strip()
             print("GPT response is", _response)
             with _filePath.open("a", encoding="utf8") as _f:

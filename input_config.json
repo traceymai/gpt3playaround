@@ -2,7 +2,7 @@
   "title": "gpt3_engine_settings",
 
   "gpt3_engine": {
-  "engine": "cushman-alpha",
+  "engine": "davinci-instruct-beta",
   "temperature": 0,
   "max_tokens": 100,
   "stop_sequence": "###",
@@ -25,7 +25,7 @@
     "output_filename": "output1.txt",
     "num_lines_per_batch": 5,
     "notes": "If 'train', it is advised to choose engine 'davinci-instruct-beta', in 'prompt_design' provide 'prompt' as first line of prompt, put 'prompt_type' as 'long', in 'zeroshot' provide 'descriptive_prompt' to further give the engine instruction on task and categories",
-    "notes": "If 'zeroshot', advised to choose engine davinci or 'cushman-alpha' (if available at time of use), in 'prompt_design' provide 'short' under 'prompt_type', provide 'descriptive_prompt' in 'zeroshot'",
+    "notes": "If 'zeroshot', advised to choose engine davinci or 'cushman-alpha' (if available at time of use), in 'prompt_design' provide 'short' under 'prompt_type', provide 'prompt' in 'prompt_design' with a more descriptive prompt",
 
     "input_file_to_label": "sm_text_sentiment_training_new.txt",
     "train": {
