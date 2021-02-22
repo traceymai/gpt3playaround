@@ -6,5 +6,6 @@
   "cushman-alpha" for higher accuracy. An ideal prompt in this situation would look like:
   
 
-  <img align="middle" src="https://imgur.com/C1ZvfOP" width="200" height="200">
+  ![Ideal prompt for Sentiment Classification](https://imgur.com/C1ZvfOP)
+
   
