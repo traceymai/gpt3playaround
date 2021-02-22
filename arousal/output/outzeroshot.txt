@@ -1,4 +1,4 @@
-ACCURACY: 70.00, TEMPERATURE: 0.0
+ACCURACY: 70.00, TEMPERATURE: 0.0, TRAINING EXAMPLES PER CATEGORY: 0
 PHRASE_TEXT GPT_OUTPUT MATCHED
 "Something cute and fluffy who gets to nap a lot, lol." positive 1
 "Some people are just very special lmao" positive 1

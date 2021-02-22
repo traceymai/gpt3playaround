@@ -1,4 +1,4 @@
-ACCURACY: 71.43, TEMPERATURE: 0.0, TRAIN EG: 3
+ACCURACY: 71.43, TEMPERATURE: 0.0, TRAINING EXAMPLES PER CATEGORY: 1
 PHRASE_TEXT GPT_OUTPUT MATCHED
 "Something cute and fluffy who gets to nap a lot, lol." positive 1
 "Someone should do a ""what posting any related [NAME] romance is like."" The comments in these posts are a real treat." negative 0

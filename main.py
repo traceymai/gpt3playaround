@@ -109,18 +109,22 @@ def prefill_prompt(_gpt_info_dict, _input_prompt, _train_mode_dict, _prompt_desi
     if _train_mode == "train":
         _trainDict = _train_mode_dict["train"]
         _trainInputFile = _trainDict["train_input_file"]
-        _numLinesPerBatch = _train_mode_dict["num_lines_per_batch"]
+        _numLinesPerCate = _train_mode_dict["num_lines_per_category"]
         with open(_trainInputFile, "r", encoding="utf8") as _f:
             _trainDataList = _f.readlines()[1:]
             _trainDataList = [x.strip("\r\n") for x in _trainDataList]
             _trainDataList = [x.split(":->", 1) for x in _trainDataList]
-            _labelTrainList = [x[0] for x in _trainDataList]
+            _trainDataDf = pd.DataFrame(_trainDataList, columns = [_classification_task, "Phrase"])
+            _trainDataDf = _trainDataDf.groupby(_classification_task).apply(lambda row: row.sample(_numLinesPerCate)).reset_index(drop=True)
+            _labelTrainList = _trainDataDf[_classification_task].tolist()
+            _phraseTrainList = _trainDataDf["Phrase"].tolist()
+            # _labelTrainList = [x[0] for x in _trainDataList]
             _f.close()
         if _classification_task == "valence":
             _labelTrainList = [change_to_strings_sentiment(x) for x in _labelTrainList]
         elif _classification_task == "arousal":
             _labelTrainList = [change_to_strings_arousal(x) for x in _labelTrainList]
-        _phraseTrainList = [x[1].strip() for x in _trainDataList]
+        # _phraseTrainList = [x[1].strip() for x in _trainDataList]
 
     elif _train_mode == "zeroshot":
         _zeroshotDict = _train_mode_dict["zeroshot"]
@@ -222,44 +226,4 @@ if __name__ == "__main__":
     # no_lines_in_batch = 10
     # no_batches_needed = (len(phraseList) // no_lines_in_batch) + 1
     submit_gpt_request(gptInstance, trainModeDict, phraseList, sentimentPrompt, classificationTask, gptInfoDict, promptDesignInfoDict)
-    # with open("valence/gpt_in_longer_prompt_valence.txt", "r+", encoding="utf8") as f:
-    #     f.truncate(0)
-    #     f.close()
-    # for batch in range(1, no_batches_needed + 1):
-    #     # for each batch of no_lines_in_batch input lines passed through
-    #     if batch == 1 or batch == 2:
-    #         gpt_instance = init_gpt(no_lines_in_batch)
-    #         end_ind = start_ind + no_lines_in_batch
-    #         if end_ind > len(phraseList):
-    #             end_ind = len(phraseList)
-    #         for ind in range(start_ind, end_ind):
-    #             if ind % no_lines_in_batch == 0:
-    #                 sentimentPrompt += str(ind % no_lines_in_batch + 1) + ". " + phraseList[ind] + "\n"
-    #                 with open("valence/gpt_in_longer_prompt_valence.txt", "a", encoding="utf8") as f:
-    #                     f.write(str(ind + 1) + ". " + phraseList[ind] + "\n")
-    #             else:
-    #                 sentimentPrompt += str(ind % no_lines_in_batch + 1) + ". " + phraseList[ind] + "\n"
-    #                 with open("valence/gpt_in_longer_prompt_valence.txt", "a", encoding="utf8") as f:
-    #                     f.write(str(ind + 1) + ". " + phraseList[ind] + "\n")
-    #         start_ind += no_lines_in_batch
-    #         sentimentPrompt += "Tweet sentiment ratings:\n"
-    #         sentimentPrompt += "1."
-    #         print("BATCH {}".format(batch))
-    #         print(sentimentPrompt)
-    #         response = gpt_instance.submit_request(prompt=sentimentPrompt).choices[0].text
-    #         print("GPT response is", response)
-    #         if batch == 1:
-    #             with open("valence/gpt_out_longer_prompt_valence.txt", "w") as f:
-    #                 f.truncate(0)
-    #                 f.write(response + "\n")
-    #                 f.close()
-    #         else:
-    #             with open("valence/gpt_out_longer_prompt_valence.txt", "a") as f:
-    #                 f.write(response + "\n")
-    #                 f.close()
-    #         sentimentPrompt = ""
-    #         sentimentPrompt += prefill_prompt()[0]
-    #
-    #     else:
-    #         break
     print("FINISH")

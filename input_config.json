@@ -15,14 +15,15 @@
   "notes": "Specify all relevant parameters as shown on OpenAI's playground here",
 
   "title": "classification_task",
-  "classification_task": "arousal",
+  "classification_task": "valence",
   "notes": "This will be either sentiment or arousal",
 
   "title": "train_mode",
   "train_mode": {
-    "train_or_zeroshot": "zeroshot",
+    "train_or_zeroshot": "train",
     "output_dir": "C:\\Users\\vta\\gpt3playaround\\gpt3playaround",
     "output_filename": "output1.txt",
+    "num_lines_per_category": 1,
     "num_lines_per_batch": 5,
     "notes": "If 'train', it is advised to choose engine 'davinci-instruct-beta', in 'prompt_design' provide 'prompt' as first line of prompt, put 'prompt_type' as 'long', in 'zeroshot' provide 'descriptive_prompt' to further give the engine instruction on task and categories",
     "notes": "If 'zeroshot', advised to choose engine davinci or 'cushman-alpha' (if available at time of use), in 'prompt_design' provide 'short' under 'prompt_type', provide 'prompt' in 'prompt_design' with a more descriptive prompt",
@@ -32,14 +33,14 @@
       "train_input_file": "valence\\train_data\\training_data_fin.txt"
     },
     "zeroshot": {
-      "descriptive_prompt": "Given a tweet, classify it into 4 arousal categories: High Activation, Medium Activation, Medium Deactivation or High Deactivation."
+      "descriptive_prompt": "Given a tweet, classify it into 3 sentiment categories: Positive, Neutral or Negative."
     }
   },
 
   "title": "prompt_design",
   "prompt_design":{
 
-    "prompt": "Given a tweet, classify it into 4 arousal categories: High Activation, Medium Activation, Medium Deactivation or High Deactivation.",
+    "prompt": "Given a tweet, classify it into 3 sentiment categories: Positive, Neutral or Negative.",
     "prompt_type": "short",
     "input_prefix": "Tweet: ",
     "output_prefix": "Output:"
