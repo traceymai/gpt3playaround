@@ -1,5 +1,4 @@
 import pandas as pd
-import sys
 import json
 from gpt import GPT
 import openai

@@ -1,5 +1,9 @@
 # GPT-3 Experiments for Sentiment and Arousal Analysis  
-##Instructions:  
+##Instructions:
+- Create a clean Anaconda virtual environment (using Python 3.7) through Anaconda Navigator
+  (this avoids unnecessary package installations through Anaconda Prompt)
+  
+- Install required packages: ```pip install -r requirements_gpt3.txt```
 - Specify all necessary input configs in input_config.json.  
 - If you're labelling Sentiment, it is recommended that you specify "train_mode/train_or_zeroshot"
   as "train" to prime the model with training instances, specify "prompt_type" under
@@ -10,7 +14,9 @@
   An ideal prompt in this situation would look like: (also format of "long" prompt)
   
 
-  <img align="middle" src="https://i.imgur.com/MNu2AVp.png" width="700">
+  <img align="middle" src="https://i.imgur.com/MNu2AVp.png" width="700">  
+
+
 Then specify input prefix (replace "Tweet") and output prefix ("Output") of choice, specify
 number of training instances per category you want to prime GPT-3 with (to maintain balance in training data).
 Note that input text file should be in the format
